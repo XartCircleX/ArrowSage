@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menú</title>
+</head>
+<body>
+    <h1>Bienvenido Alumno</h1>
+
+    <ul id="lista-Students">
+
+    </ul>
+
+    <script>
+        fetch('/students')
+            .then(response => response.json())
+            .then(data => {
+                const listaStudents = document.getElementById('lista-Students');
+
+                data.forEach(student => {
+                const listItem = document.createElement('li');
+                listItem.textContent = 
+                `Nombre: ${student.name}, 
+                Cel: ${student.cel}`;
+                listItem.classList.add('Mi_clase');
+                listaStudents.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('error al obtener datos de students: ' + error.message);
+            });
+    </script>
+</body>
+</html>
