@@ -3,6 +3,8 @@ const app = express();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
+app.use(express.static('/css'));
+
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.get("/",(req,res)=>{
@@ -61,8 +63,7 @@ app.post('/register',(req,res)=>{
         if (error) {
             console.error("No se pudo insertar los datos" + error.message);
         }
-        console.log("datos insertados correctamente");
-        res.send("datos insertados correctamente");
+        res.redirect("/login.html");
     });
 });
 app.get('/register.html', (req,res)=>{

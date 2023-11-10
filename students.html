@@ -8,7 +8,7 @@
 <body>
     <h1>Bienvenido Alumno</h1>
 
-    <ul id="lista-Students">
+    <ul id="student">
 
     </ul>
 
@@ -16,7 +16,7 @@
         fetch('/students')
             .then(response => response.json())
             .then(data => {
-                const listaStudents = document.getElementById('lista-Students');
+                const listaStudents = document.getElementById('student');
 
                 data.forEach(student => {
                 const listItem = document.createElement('h3');
