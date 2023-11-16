@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" >
-    <link rel="stylesheet" href="css/registerstyle.css">
+    <link rel="stylesheet" href="/styles/registerstyle.css">
 </head>
 <body >
 
@@ -13,7 +13,7 @@
         <!--Creates a navbar utilising css for colouring and bootstrap for formatting-->
         <div class="navbar-button">
             <!--Creates a division which resizes the button--> 
-          <button class="btn btn-block darkgreen buttontext">Login</button>
+          <button id="refLog" class="btn btn-block darkgreen buttontext">Login</button>
           <!--Creates a squared button with a dark green colouring-->
         </div>
       </nav>
@@ -64,6 +64,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('refLog').addEventListener('click', function() {
+                window.location.href = 'login.html';
+    });
+</script>
 
 </body>
 </html>
