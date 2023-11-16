@@ -57,7 +57,7 @@ app.post('/register',(req,res)=>{
     const name = req.body.name;
     const institutionalE = req.body.institutionalE
     const password = req.body.password;
-    const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, ?, ?, NOW())";
+    const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, PASSWORD('?'), ?, NOW())";
     const valores = [name,password,institutionalE];
     db.query(insertSQL, valores, (error,resultado)=>{
         if (error) {
