@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>menú</title>
 </head>
 <body>
-    
+    <h1>Welcome Teacher</h1>
+
+    <ul id="student">
+
+    </ul>
+
+    <script>
+        fetch('/teachers')
+            .then(response => response.json())
+            .then(data => {
+                const listaStudents = document.getElementById('teacher');
+
+                data.forEach(student => {
+                const listItem = document.createElement('h3');
+                listItem.textContent = 
+                `Bienvenido ${teacher.name}`;
+                listItem.classList.add('Mi_clase');
+                listaStudents.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('error al obtener datos de students: ' + error.message);
+            });
+    </script>
 </body>
 </html>

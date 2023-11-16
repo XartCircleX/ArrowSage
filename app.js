@@ -53,11 +53,47 @@ app.get('/students.html',(req,res)=> {
     res.sendFile(__dirname + '/students.html');
 });
 
+app.get('/teachers', (req,res)=>{
+    const sql = 'SELECT * FROM teachers';
+    db.query(sql,(error,resultado)=>{
+        if(error){
+            console.error('error'+err.message);
+            return res.status(500).send("error pitero")
+        }
+        res.json(resultado);
+    });
+});
+
+app.get('/teachers.html',(req,res)=> {
+    res.sendFile(__dirname + '/teachers.html');
+});
+
+app.post('/loginTeachers', (req, res) => {
+    const { institutionalEM, password } = req.body;
+
+    const query = "SELECT * FROM teachers WHERE institutional_email = ? AND password = ?";
+
+    db.query(query, [institutionalEM, password], (err, results) => {
+        if (err) {
+            console.error('Error en la consulta:', err);
+            res.send('Error en la autenticación');
+        } else if (results.length > 0) {
+            res.redirect('/teachers.html');
+        } else {
+            res.send('Nombre de usuario o contraseña incorrectos');
+        }
+    });
+});
+
+app.get('/loginTeachers.html', (req,res)=>{
+    res.sendFile(__dirname + '/loginTeachers.html');
+});
+
 app.post('/register',(req,res)=>{
     const name = req.body.name;
     const institutionalE = req.body.institutionalE
     const password = req.body.password;
-    const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, PASSWORD('?'), ?, NOW())";
+    const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, ?, ?, NOW())";
     const valores = [name,password,institutionalE];
     db.query(insertSQL, valores, (error,resultado)=>{
         if (error) {
@@ -71,11 +107,11 @@ app.get('/register.html', (req,res)=>{
 });
 
 app.post('/login', (req, res) => {
-    const { name, password } = req.body;
+    const { institutionalE, password } = req.body;
 
-    const query = 'SELECT * FROM students WHERE name = ? AND password = ?';
+    const query = "SELECT * FROM students WHERE institutional_email = ? AND password = ?";
 
-    db.query(query, [name, password], (err, results) => {
+    db.query(query, [institutionalE, password], (err, results) => {
         if (err) {
             console.error('Error en la consulta:', err);
             res.send('Error en la autenticación');
