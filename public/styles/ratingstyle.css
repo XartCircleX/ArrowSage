@@ -1,0 +1,69 @@
+body {
+    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1162579947072790559/calendar_background.jpg?ex=653c73f3&is=6529fef3&hm=72900f9d78d2b04caeb7bb6c6f43d0db8beb859b637197e3f108cd655c87c210&');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+}
+/*Creates a background image, fixing it to the screen and covering the whole page, along with disabling the scrollbar*/
+
+
+.green {
+    background-color: #057336;
+}
+
+/*Creates a colour*/
+
+.lightgreen {
+    background-color: #6CA46C;
+    ;
+}
+
+/*Creates a colour*/
+
+.darkgreen {
+    background-color: #104332;
+}
+
+/*Creates a colour*/
+
+.buttontext {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+}
+
+/*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+/* Custom CSS to make the modal wider */
+.custom-modal-lg .modal-dialog {
+    max-width: 90%;
+    /* Adjust the width as needed */
+}
+
+ /* Custom CSS for resizable textarea */
+ textarea.form-control {
+    resize: none;
+    /* Prevent direct resizing */
+    overflow: hidden;
+    /* Hide scrollbar */
+  }
+
+   /* STAR RATING */
+  .rating {
+    font-size: 30px;
+  }
+
+  .star {
+    color: #ccc;
+    /* Default color */
+    cursor: pointer;
+  }
+
+  .star.active {
+    color: gold;
+    /* Change color for selected stars */
+  }
+   /* STAR RATING */

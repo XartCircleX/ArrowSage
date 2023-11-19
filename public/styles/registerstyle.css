@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1157858507597549568/Register-background.png?ex=65348144&is=65220c44&hm=32e83ff33c63a4e23f97599a82b60945c94b0818d1b70598486c1bc5facad82d&');
+    background-image: url('/img/register_student.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

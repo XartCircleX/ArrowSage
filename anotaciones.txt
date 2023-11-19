@@ -1,0 +1,62 @@
+const express = require ("express");
+const app = express();
+const mysql = require("mysql");
+const bodyParser = require("body-parser");
+const router = express.Router();
+
+app.use(express.static(__dirname + '/public'));
+
+app.post('/register',(req,res)=>{
+    const name = req.body.name;
+    const institutionalE = req.body.institutionalE
+    const password = req.body.password;
+    const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, ?, ?, NOW())";
+    const valores = [name,password,institutionalE];
+    db.query(insertSQL, valores, (error,resultado)=>{
+        if (error) {
+            console.error("No se pudo insertar los datos" + error.message);
+        }
+        res.redirect("/login.html");
+    });
+});
+app.get('./scr/routes/register.html', (req,res)=>{
+    res.sendFile(__dirname + './src/routes/register.html');
+});
+
+////////////////////////
+
+
+app.get("/",(req,res)=>{
+    res.send("hola mundo")
+});
+
+db.end((err)=>{
+    if(err){
+        console.error('no se pudo desconectar'+err.message);
+    }
+        else{
+         console.log('conexion cerrada con exito');
+        }
+        process.exit();
+        });
+
+////////////////////////
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion</title>
+</head>
+<body>
+    <h1>Login (Teacher)</h1>
+    <form action="/loginTeachers" method="post">
+        <label for="institutionalEM">Correo Institucional</label>
+        <input type="text" id="institutionalEM" name="institutionalEM" required>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
