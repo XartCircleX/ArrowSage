@@ -12,16 +12,15 @@
 
 <body>
 
-    <nav class="navbar justify-content-end green">
+    <nav class="navbar green">
             <div class="navbar-button px-2">
                 <!--Creates a division which resizes the button-->
-                <button id="refLogTea" class="btn btn-block darkgreen buttontext">Teachers</button>
+                <h1 class="buttontext">ArrowSage</h1>
                 <!--Creates a squared button with a dark green colouring-->
             </div>
-            <!--Creates a navbar utilising css for colouring and bootstrap for formatting-->
-            <div class="navbar-button">
+            <div class="navbar-button px-2">
                 <!--Creates a division which resizes the button-->
-                <button id="refLog" class="btn btn-block darkgreen buttontext">Login</button>
+                <button id="logoButton" class="btn btn-block buttontext">Home</button>
                 <!--Creates a squared button with a dark green colouring-->
             </div>
     </nav>
@@ -77,14 +76,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.getElementById('refLog').addEventListener('click', function () {
-            window.location.href = 'login.html';
-        });
-        document.getElementById('refLogTea').addEventListener('click', function () {
-            window.location.href = 'loginTeachers.html';
+        document.getElementById('logoButton').addEventListener('click', function () {
+            window.location.href = '/';
         });
     </script>
 
 </body>
-
 </html>

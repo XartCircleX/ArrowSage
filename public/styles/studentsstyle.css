@@ -1,0 +1,24 @@
+.container_cover{
+    width: 100%;
+    height: 800px;
+    background: #057336;
+}
+
+.cover{
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: s;
+}
+
+
+.container_cover .text{
+    max-width: 400px;
+}
+
+.container_cover .text h1{
+    font-size: 18px;
+    font-weight: 600;
+}
