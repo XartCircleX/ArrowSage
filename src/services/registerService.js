@@ -1,17 +1,17 @@
-import db from "./../services/dbservice";
-import bcrypt from "bcryptjs";
+const db = require("./../services/dbservice");
+const bcrypt = require("bcryptjs");
 
-let createNewUser = (data) => {
+const createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         // check email is exist or not
-        let isEmailExist = await checkExistEmail(data.email);
+        const isEmailExist = await checkExistEmail(data.email);
         if (isEmailExist) {
             reject(`This email "${data.email}" has already exist. Please choose an other email`);
         } else {
             // hash password
-            let salt = bcrypt.genSaltSync(10);
-            let userItem = {
-                fullname: data.fullname,
+            const salt = bcrypt.genSaltSync(10);
+            const userItem = {
+                fullname: data.name,
                 email: data.email,
                 password: bcrypt.hashSync(data.password, salt),
             };
@@ -30,7 +30,7 @@ let createNewUser = (data) => {
     });
 };
 
-let checkExistEmail = (email) => {
+const checkExistEmail = (email) => {
     return new Promise( (resolve, reject) => {
         try {
             db.query(

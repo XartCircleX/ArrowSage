@@ -6,52 +6,34 @@ const StudentsController = require('../controllers/StudentsController');
 const TeachersController = require('../controllers/TeachersController');
 const LoginTeachersController = require('../controllers/LoginTeachersController');
 const DataEditorController = require('../controllers/DataEditorController');
+const auth = require("../validation/authValidation");
+const passport = require("passport");
+const initPassportLocal = require("../controllers/passportLocalController");
 
-router.post('/');
+
+// Init all passport
+initPassportLocal();
+
+const initWebRoutes = (app) => {
+    router.get("/", LoginController.checkLoggedIn, StudentsController.handleHelloWorld);
+    router.get("/login",LoginController.checkLoggedOut, LoginController.getPageLogin);
+    router.post("/login", passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login",
+        successFlash: true,
+        failureFlash: true
+    }));
+
+    router.get("/register", RegisterController.getPageRegister);
+    router.post("/register", auth.validateRegister, RegisterController.createNewUser);
+    router.post("/logout", LoginController.postLogOut);
+    return app.use("/", router);
+};
+
 
 router.get('/', (req, res) => {
     res.sendFile(__dirname + '/../');
 });
 
-router.post('/login', LoginController.getUserLog);
 
-router.get('/login.html', (req, res) => {
-    res.sendFile(__dirname + '/../login.html');
-});
-
-router.post('/register', RegisterController.getUser);
-
-router.get('/register.html', (req, res) => {
-    res.sendFile(__dirname + '/../register.html');
-});
-
-router.post('/students', StudentsController.getStudents);
-
-router.get('/students.html', (req, res) => {
-    res.sendFile(__dirname + '/../students.html');
-});
-
-router.post('/teachers', TeachersController.getTeacher);
-
-router.get('/teachers.html', (req, res) => {
-    res.sendFile(__dirname + '/../teachers.html');
-});
-
-router.post('/loginTeachers', LoginTeachersController.getTeacherLog);
-
-router.get('/loginTeachers.html', (req, res) => {
-    res.sendFile(__dirname + '/../loginTeachers.html');
-});
-
-router.post('/Update', DataEditorController.getUpdate);
-router.post('/Erase', DataEditorController.getErase);
-
-router.get('/dataEditor.html', (req, res) => {
-    res.sendFile(__dirname + '/../dataEditor.html');
-
-});
-
-
-
-
-module.exports = router;
+module.exports = initWebRoutes;

@@ -1,25 +1,84 @@
-import { check } from "express-validator";
+const db = require("./../services/dbservice");
+const bcrypt = require("bcryptjs");
 
-let validateRegister = [
-    check("email", "Invalid email").isEmail().trim(),
+const handleLogin = (email, password) => {
+    return new Promise(async (resolve, reject) => {
+        //check email is exist or not
+        const user = await findUserByEmail(email);
+        if (user) {
+            //compare password
+            await bcrypt.compare(password, user.password).then((isMatch) => {
+                if (isMatch) {
+                    resolve(true);
+                } else {
+                    reject(`The password that you've entered is incorrect`);
+                }
+            });
+        } else {
+            reject(`This user email "${email}" doesn't exist`);
+        }
+    });
+};
 
-    check("password", "Invalid password. Password must be at least 2 chars long")
-    .isLength({ min: 2 }),
 
-    check("passwordConfirmation", "Password confirmation does not match password")
-    .custom((value, { req }) => {
-        return value === req.body.password
-    })
-];
+const findUserByEmail = (email) => {
+    return new Promise((resolve, reject) => {
+        try {
+            db.query(
+                ' SELECT * FROM student WHERE institutional_email = ? ',
+                [email],
+                function(err, rows) {
+                    if (err) {
+                        reject(err)
+                    }
+                    const user = rows[0];
+                    resolve(user);
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
 
-let validateLogin = [
-    check("email", "Invalid email").isEmail().trim(),
+const findUserById = (id) => {
+    return new Promise((resolve, reject) => {
+        try {
+            db.query(
+                ' SELECT * FROM students WHERE id_student = ?  ', id,
+                function(err, rows) {
+                    if (err) {
+                        reject(err)
+                    }
+                    const user = rows[0];
+                    resolve(user);
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
 
-    check("password", "Invalid password")
-    .not().isEmpty()
-];
+const comparePassword = (password, userObject) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await bcrypt.compare(password, userObject.password).then((isMatch) => {
+                if (isMatch) {
+                    resolve(true);
+                } else {
+                    resolve(`The password that you've entered is incorrect`);
+                }
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
 
 module.exports = {
-    validateRegister: validateRegister,
-    validateLogin: validateLogin
+    handleLogin: handleLogin,
+    findUserByEmail: findUserByEmail,
+    findUserById: findUserById,
+    comparePassword: comparePassword
 };

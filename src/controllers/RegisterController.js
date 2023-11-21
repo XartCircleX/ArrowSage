@@ -1,19 +1,40 @@
-const db = require('../services/dbservice');
+const registerService = require ("./../services/registerService");
+const { validationResult } = require ("express-validator");
 
-exports.getUser = (req, res) => {
-  const name = req.body.name;
-  const institutionalE = req.body.institutionalE;
-  const password = req.body.password;
+const getPageRegister = (req, res) => {
+    return res.render("register.ejs", {
+        errors: req.flash("errors")
+    });
+};
 
-  const insertSQL = "INSERT INTO students (name, password, institutional_email, created_at) VALUES (?, ?, ?, NOW())";
-  const valores = [name, password, institutionalE];
-
-  db.query(insertSQL, valores, (error, resultado) => {
-    if (error) {
-      console.error("No se pudo insertar los datos", error);
-      res.status(500).send("Error interno del servidor");
-      return;
+const createNewUser = async (req, res) => {
+    //validate required fields
+    const errorsArr = [];
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+      const errors = Object.values(validationErrors.mapped());
+        errors.forEach((item) => {
+            errorsArr.push(item.msg);
+        });
+        req.flash("errors", errorsArr);
+        return res.redirect("/register");
     }
-    res.redirect("/login.html");
-  });
+
+    //create a new user
+    const newUser = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    };
+    try {
+        await registerService.createNewUser(newUser);
+        return res.redirect("/login");
+    } catch (err) {
+        req.flash("errors", err);
+        return res.redirect("/register");
+    }
+};
+module.exports = {
+    getPageRegister: getPageRegister,
+    createNewUser: createNewUser
 };
