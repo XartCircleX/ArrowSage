@@ -22,3 +22,18 @@
     font-size: 18px;
     font-weight: 600;
 }
+
+.green{
+    background-color: #057336;
+}/*Creates a colour*/
+
+.darkgreen{
+    background-color: #104332;
+}/*Creates a colour*/
+
+.buttontext{
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: bold;
+font-size: x-large;
+color: white;
+}/*Creates a typography for the text of the buttons, adding color, font weight and size*/

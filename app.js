@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const app = express();
 const configViewEngine = require('./src/config/viewEngine')
@@ -9,8 +8,6 @@ const connectFlash = require("connect-flash");
 const session = require("express-session");
 const passport = require ("passport");
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(express.json());
 
@@ -22,12 +19,19 @@ app.use(session({
   secret: 'secret',
   resave: true,
   saveUninitialized: false,
+  cookie: {
+      maxAge: 1000 * 60 * 60 * 24 // 86400000 1 day
+  }
 }));
 
-configViewEngine(app);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Enable flash message
 app.use(connectFlash());
+
+configViewEngine(app);
+
 
 // Config passport middleware
 app.use(passport.initialize());

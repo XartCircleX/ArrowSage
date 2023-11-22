@@ -11,7 +11,7 @@ const createNewUser = (data) => {
             // hash password
             const salt = bcrypt.genSaltSync(10);
             const userItem = {
-                fullname: data.name,
+                fullname: data.fullname,
                 email: data.email,
                 password: bcrypt.hashSync(data.password, salt),
             };
@@ -34,7 +34,7 @@ const checkExistEmail = (email) => {
     return new Promise( (resolve, reject) => {
         try {
             db.query(
-                ' SELECT * FROM students WHERE institutional_email = ?  ', email,
+                ' SELECT * FROM `students` WHERE `email` = ?  ', email,
                 function(err, rows) {
                     if (err) {
                         reject(err)

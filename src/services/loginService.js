@@ -25,7 +25,7 @@ const findUserByEmail = (email) => {
     return new Promise((resolve, reject) => {
         try {
             db.query(
-                ' SELECT * FROM student WHERE institutional_email = ? ',
+                ' SELECT * FROM students WHERE email = ? ',
                 [email],
                 function(err, rows) {
                     if (err) {
@@ -45,7 +45,7 @@ const findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try {
             db.query(
-                ' SELECT * FROM students WHERE id_student = ?  ', id,
+                ' SELECT * FROM students WHERE id = ?  ', id,
                 function(err, rows) {
                     if (err) {
                         reject(err)

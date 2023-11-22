@@ -4,21 +4,20 @@ const LoginController = require('../controllers/LoginController');
 const RegisterController = require('../controllers/RegisterController');
 const StudentsController = require('../controllers/StudentsController');
 const TeachersController = require('../controllers/TeachersController');
+const LandingController = require('../controllers/LandignController');
 const LoginTeachersController = require('../controllers/LoginTeachersController');
 const DataEditorController = require('../controllers/DataEditorController');
 const auth = require("../validation/authValidation");
 const passport = require("passport");
 const initPassportLocal = require("../controllers/passportLocalController");
 
-
-// Init all passport
 initPassportLocal();
 
 const initWebRoutes = (app) => {
-    router.get("/", LoginController.checkLoggedIn, StudentsController.handleHelloWorld);
+    router.get("/students", LoginController.checkLoggedIn, StudentsController.handleHelloWorld);
     router.get("/login",LoginController.checkLoggedOut, LoginController.getPageLogin);
     router.post("/login", passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/students",
         failureRedirect: "/login",
         successFlash: true,
         failureFlash: true
@@ -30,10 +29,8 @@ const initWebRoutes = (app) => {
     return app.use("/", router);
 };
 
+router.get("/landing", LandingController.renderLandingPage);
 
-router.get('/', (req, res) => {
-    res.sendFile(__dirname + '/../');
-});
-
+router.get("/", LandingController.renderLandingPage);
 
 module.exports = initWebRoutes;

@@ -24,6 +24,16 @@
         </div>
       </nav>
 
+      <div>
+        <% if(errors != "") { %>
+            <% errors.forEach((item) => { %>
+                <div class="alert alert-danger">
+                    <%- item %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+
 <div class="container mt-5 mx-auto ">
      <!--Creates a container which centers itself-->
     <div class="row justify-content-center">
@@ -66,7 +76,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.getElementById('logoButton').addEventListener('click', function() {
-                window.location.href = '/';
+                window.location.href = '/landing';
     });
 </script>
 

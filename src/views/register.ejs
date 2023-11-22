@@ -38,21 +38,32 @@
                             class="w-25 h-25">
                         <!--This is an image, it resizes itself using bootstrap-->
                     </div>
+
+                    <div>
+                        <% if(errors != "") { %>
+                            <% errors.forEach((item) => { %>
+                                <div class="alert alert-danger">
+                                    <%- item %>
+                                </div>
+                            <% }); %>
+                        <% } %>
+                    </div>
                     <div class="card-body lightgreen">
                         <!--Makes a coloured body for the card-->
                         <form action="/register" method="post">
                             <!--With proper coding, the form attribute will allows us to group the data and submit the input by the id-->
                             <div class="form-group py-3">
                                 <!--Container which separates vertically the inputs-->
-                                <label for="name"></label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your username" required>
+                                <div class="form-group">
+                                    <label for="fullName"></label>
+                                    <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full name">
+                                </div>
                                 <!--An input type where you can type the username-->
                             </div>
                             <div class="form-group py-3">
                                 <!--Container which separates vertically the inputs-->
-                                <label for="institutionalE"></label>
-                                <input type="email" class="form-control" id="institutionalE" name="institutionalE"
+                                <label for="email"></label>
+                                <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter your Email" required>
                                 <!--An input type where you can type the email-->
                             </div>
@@ -61,6 +72,13 @@
                                 <label for="password"></label>
                                 <input type="password" class="form-control" id="password" name="password"
                                     placeholder="Enter your password" required>
+                                <!--An input type where you can type the password-->
+                            </div>
+                            <div class="form-group py-3">
+                                <!--Container which separates vertically the inputs-->
+                                <label for="passwordConfirmation"></label>
+                                <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation"
+                                    placeholder="Password Confirmation" required>
                                 <!--An input type where you can type the password-->
                             </div>
                             <button type="submit" class="btn btn-block py-3 darkgreen buttontext">Register</button>
@@ -77,7 +95,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.getElementById('logoButton').addEventListener('click', function () {
-            window.location.href = '/';
+            window.location.href = '/landing';
         });
     </script>
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/studentsstyle.css">
+</head>
+
+    <header>
+        <div class="container-fluid green">        
+        <ul class="nav nav-tabs">
+            <li>
+                <h2> Welcome "<%= user.fullname%>"</h2>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="../citas.html">Citas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="../calendario.html">Calendario</a>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action="/logout">
+                    <button type="submit" class="btn btn-primary">Log out</button>
+                </form>
+            </li>
+          </ul>
+        </div>
+    </nav> 
+    </header>
+
+    <body>
+
+    <section class="carousel">
+        <div class="container">
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Information</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Second slide label</h5>
+                  <p>Information</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Third slide label</h5>
+                  <p>Information</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </section>
+
+
+<!-- Esta es una pequeÃ±a parte que contiene informacion sobre la pagina-->
+    <section class="informacion my-5">
+        <h2 class="text-center my-5">Acerca de esta Pagina</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum modi architecto ipsum adipisci maxime rem doloremque natus, mollitia voluptatum doloribus inventore molestias incidunt, distinctio tempora. Assumenda modi eligendi earum eum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum deleniti consequuntur explicabo expedita odit dicta eum commodi quod harum aut? Alias, quae eum debitis veniam unde modi nostrum corporis laborum.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <img class="img-fluid" src="https://picsum.photos/800/300" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- En esta parte son tarjetas que explican que se puede hacer en la pagina y redireccion al usuario a cada paggina
+    segun lo que quiera hacer-->
+    <section class="opciones my-5">
+        <h2 class="text-center my-5">Nuestros Servicios</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card text-center">
+                        <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Agenda tus Asesorias</h5>
+                          <p class="card-text">Este boton te llevara a la pagina de citas, ahi podras llenar un formulario para agendar una asesoria.</p>
+                          <a href="#" class="btn darkgreen buttontext">Ir a Citas</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center">
+                        <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Catalogo de profesores</h5>
+                          <p class="card-text">Este boton te llevara a el catalogo de profesores que ofrecen asesorias y algunas de las materias en las que pueden asesorarte.</p>
+                          <a href="#" class="btn darkgreen buttontext">Ver Catalogo</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-center">
+                        <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Estadisticas, criticas y rating</h5>
+                          <p class="card-text">Este boton te enviara a una pagina donde podras ver las estadisticas y rating sobre los profesores y materias dadas.</p>
+                          <a href="/ratings.html" class="btn btn-block darkgreen buttontext">Ir a Estadisticas</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!-- Este es el pie de nuestra pagina web-->
+    <footer class="green py-5 mt-5">
+      <div class="container text-light text-center">
+        <p class="display-5 mb-3">ArrowSage</p>
+        <small class="text-white-50">&copy; Copyright by ByteGrad. All rights reserved.</small>
+      </div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  
+</body>
+</html>

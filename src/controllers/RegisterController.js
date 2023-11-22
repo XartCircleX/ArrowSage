@@ -22,7 +22,7 @@ const createNewUser = async (req, res) => {
 
     //create a new user
     const newUser = {
-        name: req.body.name,
+        fullname: req.body.fullName,
         email: req.body.email,
         password: req.body.password
     };
