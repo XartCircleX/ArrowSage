@@ -7,7 +7,7 @@ const getPageLogin = (req, res) => {
     });
 };
 
-const handleLogin = async (req, res) => {
+const handleLogin = async (req, res, userType) => {
     const errorsArr = [];
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {

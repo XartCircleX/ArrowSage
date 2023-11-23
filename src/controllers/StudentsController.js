@@ -1,9 +1,9 @@
-const handleHelloWorld = async (req, res) => {
-    return res.render("students",{
+const renderStudentPage = async (req, res) => {
+    res.render("students",{
         user: req.user
     });
 };
 
 module.exports = {
-    handleHelloWorld: handleHelloWorld,
+    renderStudentPage: renderStudentPage,
 };

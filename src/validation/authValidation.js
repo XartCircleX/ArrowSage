@@ -12,14 +12,23 @@ const validateRegister = [
     })
 ];
 
-const validateLogin = [
-    check("email", "Invalid email").isEmail().trim(),
+const validateLoginStudents = [
+    check("studentEmail", "Invalid email").isEmail().trim(),
 
-    check("password", "Invalid password")
+    check("studentPassword", "Invalid password")
     .not().isEmpty()
 ];
 
+const validateLoginTeachers = [
+    check("teacherEmail", "Invalid email").isEmail().trim(),
+
+    check("teacherPassword", "Invalid password")
+    .not().isEmpty()
+];
+
+
 module.exports = {
     validateRegister: validateRegister,
-    validateLogin: validateLogin
+    validateLoginStudents: validateLoginStudents,
+    validateLoginTeachers: validateLoginTeachers
 };
