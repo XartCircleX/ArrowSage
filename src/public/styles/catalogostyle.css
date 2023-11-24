@@ -1,0 +1,16 @@
+body {
+    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1162579947072790559/calendar_background.jpg?ex=653c73f3&is=6529fef3&hm=72900f9d78d2b04caeb7bb6c6f43d0db8beb859b637197e3f108cd655c87c210&');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+}
+/*Creates a background image, fixing it to the screen and covering the whole page, along with disabling the scrollbar*/
+
+
+.green {
+    background-color: #057336;
+}
+
+/*Creates a colour*/

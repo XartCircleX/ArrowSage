@@ -24,6 +24,17 @@
         </div>
       </nav>
 
+      <div>
+        <% if(errors != "") { %>
+            <% errors.forEach((item) => { %>
+                <div class="alert alert-danger">
+                    <%- item %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+
+
 <div class="container mt-5 mx-auto ">
      <!--Creates a container which centers itself-->
     <div class="row justify-content-center">
@@ -38,12 +49,12 @@
                 </div>
                 <div class="card-body lightgreen">
                     <!--Makes a coloured body for the card-->
-                    <form action="/login" method="post">
+                    <form action="/loginTeachers" method="post">
                     <!--With proper coding, the form attribute will allows us to group the data and submit the input by the id-->
                         <div class="form-group py-3">
                                <!--Container which separates vertically the inputs-->
-                            <label for="teacherPassword"></label>
-                            <input type="email" class="form-control" name="teacherPassword" id="teacherPassword" placeholder="institutional Email" required>
+                            <label for="teacherEmail"></label>
+                            <input type="email" class="form-control" name="teacherEmail" id="teacherEmail" placeholder="institutional Email" required>
                                <!--An input type where you can type the username-->
                         </div>
                         <div class="form-group py-3">

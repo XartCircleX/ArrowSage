@@ -1,6 +1,7 @@
 const passportLocal = require ("passport-local");
 const passport = require ("passport");
 const loginService = require ("../services/loginService");
+const loginTeacherService = require ("../services/loginTeacherService");
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -32,11 +33,11 @@ const initPassportLocal = () => {
                 return done(null, false, { message: err });
             }
             passport.serializeUser((user, done) => {
-                done(null, user.id);
+                done(null, user.id_student);
             });
             
-            passport.deserializeUser((id, done) => {
-                loginService.findUserById(id).then((user) => {
+            passport.deserializeUser((id_student, done) => {
+                loginService.findUserById(id_student).then((user) => {
                     return done(null, user);
                 }).catch(error => {
                     return done(error, null)
@@ -45,44 +46,58 @@ const initPassportLocal = () => {
 
         }));
 
-        passport.use("Teacher", new LocalStrategy({
-            usernameField: 'teacherEmail',
-            passwordField: 'teacherPassword',
-            passReqToCallback: true
-        },
-        async (req, teacherEmail, teacherPassword, done) => {
-            try {
-                await loginService.findUserByEmail(teacherEmail).then(async (admin) => {
+    passport.use(
+        "teacher",
+        new LocalStrategy(
+            {
+                usernameField: "teacherEmail",
+                passwordField: "teacherPassword",
+                passReqToCallback: true,
+            },
+            async (req, teacherEmail, teacherPassword, done) => {
+                try {
+                    const admin = await loginTeacherService.findTeacherByEmail(teacherEmail);
+
                     if (!admin) {
-                        return done(null, false, req.flash("errors", `This user email "${teacherEmail}" doesn't exist`));
+                        return done(
+                            null,
+                            false,
+                            req.flash("errors", `This user email "${teacherEmail}" doesn't exist`)
+                        );
                     }
-                    if (admin) {
-                        let match = await loginService.comparePassword(teacherPassword, admin);
-                        if (match === true) {
-                            return done(null, admin, null)
-                        } else {
-                            return done(null, false, req.flash("errors", match)
-                            )
-                        }
+
+                    const isPasswordCorrect = await loginTeacherService.compareTeacherPassword(
+                        teacherPassword,
+                        admin
+                    );
+
+                    if (isPasswordCorrect) {
+                        return done(null, admin, null);
+                    } else {
+                        return done(null, false, req.flash("errors", "Incorrect password"));
                     }
-                });
-            } catch (err) {
-                console.log(err);
-                return done(null, false, { message: err });
+                } catch (err) {
+                    console.log(err);
+                    return done(null, false, { message: err });
+                }
             }
-        }));
+        )
+    );
 
         passport.serializeUser((admin, done) => {
-            done(null, admin.id);
+            done(null, admin.id_teacher);
         });
         
-        passport.deserializeUser((id, done) => {
-            loginService.findUserById(id).then((admin) => {
+        passport.deserializeUser((id_teacher, done) => {
+            loginTeacherService.findTeacherById(id_teacher).then((admin) => {
                 return done(null, admin);
             }).catch(error => {
                 return done(error, null)
             });
         });
 };
+
+
+
 
 module.exports = initPassportLocal;

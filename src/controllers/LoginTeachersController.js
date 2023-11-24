@@ -1,5 +1,5 @@
 const validationResult = require ("express-validator");
-const loginService = require("../services/loginService");
+const loginTeachersService = require("../services/loginTeacherService");
 
 const getPageLoginTeachers = (req, res) => {
     return res.render("loginTeachers.ejs", {
@@ -20,7 +20,7 @@ const handleLoginTeacher = async (req, res) => {
     }
 
     try {
-        await loginService.handleLoginTeacher(req.body.email, req.body.password);
+        await loginTeachersService.handleLoginTeacher(req.body.teacherEmail, req.body.teacherPassword);
         return res.redirect("/teachers");
     } catch (err) {
         req.flash("errors", err);

@@ -41,11 +41,11 @@ const findUserByEmail = (email) => {
     });
 };
 
-const findUserById = (id) => {
+const findUserById = (id_student) => {
     return new Promise((resolve, reject) => {
         try {
             db.query(
-                ' SELECT * FROM students WHERE id = ?  ', id,
+                ' SELECT * FROM students WHERE id_student = ?  ', id_student,
                 function(err, rows) {
                     if (err) {
                         reject(err)
