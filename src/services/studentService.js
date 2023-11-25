@@ -1,18 +1,25 @@
-// En tu servicio studentService.js
-const db = require('./dbservice'); // Asegúrate de tener una instancia de tu conexión a la base de datos
+const db = require('./dbservice');
 
 const getGroupByStudentId = async (studentId) => {
-  // Realiza una consulta a la base de datos para obtener el grupo del estudiante
-  const query = "SELECT name FROM Groups WHERE id_group = (SELECT id_group FROM students WHERE id_student = ?);";   /*<---------- error actual*/
-  const [result] = await db.query(query, studentId);
+  try {
+    const query = 'SELECT name FROM groups WHERE id_group = (SELECT id_group FROM students WHERE id_student = ?);';
+    console.log('SQL Query:', query);
 
-  if (result.length > 0) {
-    // Devuelve el nombre del grupo si se encuentra
-    return result[0].name;
+    // Utiliza await para esperar el resultado de la consulta
+    const result = await db.query(query, [studentId]);
+
+    if (result && result.length > 0) {
+      return result[0].name;
+    } else if (result && result.length === 0) {
+      return "El estudiante no está en un grupo.";
+    } else {
+      console.error("Error al obtener datos del grupo. Result:", result);
+      return "Error al obtener datos del grupo.";
+    }
+  } catch (error) {
+    console.error('Error de consulta:', error); // Agrega esta línea
+    throw error;
   }
-
-  // Devuelve null si el estudiante no está en un grupo
-  return null;
 };
 
 module.exports = {

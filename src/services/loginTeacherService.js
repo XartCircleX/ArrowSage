@@ -1,17 +1,17 @@
 const db = require("./dbservice");
 
-const handleLoginTeacher = (teacherEmail, teacherPassword) => {
+const handleLoginTeacher = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const teacher = await findTeacherByEmail(teacherEmail);
+            const teacher = await findTeacherByEmail(email);
             if (teacher) {
-                if (teacherPassword === teacher.teacherPassword) {
+                if (password === teacher.password) {
                     resolve(true);
                 } else {
                     reject(`The password that you've entered is incorrect`);
                 }
             } else {
-                reject(`This user email "${teacherEmail}" doesn't exist`);
+                reject(`This user email "${email}" doesn't exist`);
             }
         } catch (err) {
             reject(err);
@@ -19,11 +19,11 @@ const handleLoginTeacher = (teacherEmail, teacherPassword) => {
     });
 };
 
-const findTeacherByEmail = (teacherEmail) => {
+const findTeacherByEmail = (email) => {
     return new Promise((resolve, reject) => {
         db.query(
             ' SELECT * FROM Teachers WHERE email = ? ',
-            [teacherEmail],
+            [email],
             function (err, rows) {
                 if (err) {
                     reject(err);
@@ -51,10 +51,10 @@ const findTeacherById = (id_teacher) => {
     });
 };
 
-const compareTeacherPassword = (teacherPassword, teacherObject) => {
+const compareTeacherPassword = (password, teacherObject) => {
     return new Promise((resolve, reject) => {
         try {
-        if (teacherPassword === teacherObject.teacherPassword) {
+        if (password === teacherObject.password) {
             resolve(true);
         } else {
             resolve(`The password that you've entered is incorrect`); 

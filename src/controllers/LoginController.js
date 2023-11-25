@@ -14,7 +14,6 @@ const handleLogin = async (req, res, userType) => {
         const errors = Object.values(validationErrors.mapped());
         errors.forEach((item) => {
             errorsArr.push(item.msg);
-            req.session.studentId = req.user.id;
         });
         req.flash("errors", errorsArr);
         return res.redirect("/login");

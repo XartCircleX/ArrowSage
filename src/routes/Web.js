@@ -9,10 +9,10 @@ const LoginTeachersController = require('../controllers/LoginTeachersController'
 const catalogoController = require('../controllers/CatalogoController')
 const perfilController = require('../controllers/PerfilController')
 const DataEditorController = require('../controllers/DataEditorController');
+const calendarioController = require('../controllers/calendarioController')
 const auth = require("../validation/authValidation");
 const passport = require("passport");
 const initPassportLocal = require("../controllers/passportLocalController");
-const loginTeacherService = require('../services/loginTeacherService');
 
 initPassportLocal();
 
@@ -30,6 +30,7 @@ const initWebRoutes = (app) => {
 
     router.get("/students", LoginController.checkLoggedIn, StudentsController.renderStudentPage);
     router.get("/catalogo", LoginController.checkLoggedIn, catalogoController.renderCatalogoPage);
+    router.get("/calendario", LoginController.checkLoggedIn, calendarioController.renderCalendarioPage);
     router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
     router.get("/login",LoginController.checkLoggedOut, LoginController.getPageLogin);
     router.post("/login", passport.authenticate("student", {

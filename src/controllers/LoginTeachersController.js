@@ -20,7 +20,7 @@ const handleLoginTeacher = async (req, res) => {
     }
 
     try {
-        await loginTeachersService.handleLoginTeacher(req.body.teacherEmail, req.body.teacherPassword);
+        await loginTeachersService.handleLoginTeacher(req.body.email, req.body.password);
         return res.redirect("/teachers");
     } catch (err) {
         req.flash("errors", err);

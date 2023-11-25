@@ -32,18 +32,6 @@ const initPassportLocal = () => {
                 console.log(err);
                 return done(null, false, { message: err });
             }
-            passport.serializeUser((user, done) => {
-                done(null, user.id_student);
-            });
-            
-            passport.deserializeUser((id_student, done) => {
-                loginService.findUserById(id_student).then((user) => {
-                    return done(null, user);
-                }).catch(error => {
-                    return done(error, null)
-                });
-            });
-
         }));
 
     passport.use(
@@ -83,19 +71,35 @@ const initPassportLocal = () => {
             }
         )
     );
-
-        passport.serializeUser((admin, done) => {
-            done(null, admin.id_teacher);
-        });
-        
-        passport.deserializeUser((id_teacher, done) => {
-            loginTeacherService.findTeacherById(id_teacher).then((admin) => {
-                return done(null, admin);
-            }).catch(error => {
-                return done(error, null)
-            });
-        });
 };
+
+passport.serializeUser((user, done) => {
+    if (user.id_student) {
+        done(null, { userType: 'student', id: user.id_student });
+    } else if (user.id_teacher) {
+        done(null, { userType: 'teacher', id: user.id_teacher });
+    } else {
+        done(new Error('Invalid user object'), null);
+    }
+});
+
+passport.deserializeUser((userData, done) => {
+    if (userData.userType === 'student') {
+        loginService.findUserById(userData.id).then((user) => {
+            done(null, user);
+        }).catch(error => {
+            done(error, null);
+        });
+    } else if (userData.userType === 'teacher') {
+        loginTeacherService.findTeacherById(userData.id).then((teacher) => {
+            done(null, teacher);
+        }).catch(error => {
+            done(error, null);
+        });
+    } else {
+        done(new Error('Invalid user type'), null);
+    }
+});
 
 
 

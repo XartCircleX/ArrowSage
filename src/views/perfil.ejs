@@ -28,9 +28,13 @@
                         <h4 class="card-title text-center">Username</h4>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><strong>Grade:</strong> placeholder</li>
-                            <li class="list-group-item"><strong>Group:</strong> placeholder</li>
+                            <li class="list-group-item"><strong>Group:</strong> <% if (group) { %>
+                                <p><%= group %></p>
+                            <% } else { %>
+                                <p>El estudiante no está en un grupo.</p>
+                            <% } %></li>
                             <li class="list-group-item"><strong>Specialty:</strong> placeholder</li>
-                            <li class="list-group-item"><strong>Email:</strong> <%= groupName %></li>
+                            <li class="list-group-item"><strong>Email:</strong>placeholder</li>
                             <li class="list-group-item"><strong>Control number:</strong> placeholder</li>
                         </ul>
                     </div>
