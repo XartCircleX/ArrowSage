@@ -1,7 +1,8 @@
 const renderStudentPage = async (req, res) => {
-    res.render("students",{
-        user: req.user
-    });
+
+    const studentName = req.user.fullname;
+    
+    res.render("students",{ studentName });
 };
 
 module.exports = {

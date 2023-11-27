@@ -17,25 +17,26 @@ const initPassportLocal = require("../controllers/passportLocalController");
 initPassportLocal();
 
 const initWebRoutes = (app) => {
-    router.get("/Teachers", LoginTeachersController.checkLoggedTeacherIn, TeachersController.renderLoginTeachersPage)
-    router.get("/loginTeachers", LoginTeachersController.checkLoggedTeacherOut, LoginTeachersController.getPageLoginTeachers)
-    router.post("/loginTeachers", passport.authenticate("teacher", {
-        successRedirect: "/Teachers",
-        failureRedirect: "/loginTeachers",
+    router.get("/students", LoginController.checkLoggedIn, StudentsController.renderStudentPage);
+    router.get("/catalogo", LoginController.checkLoggedIn, catalogoController.renderCatalogoPage);
+    router.get("/calendario", LoginController.checkLoggedIn, calendarioController.rendercalendarPage);
+    router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
+    router.get("/dataEditor", LoginController.checkLoggedIn, DataEditorController.renderDataEditorPage);
+    router.get("/login", LoginController.checkLoggedOut, LoginController.getPageLogin);
+    router.post("/login", passport.authenticate("student", {
+        successRedirect: "/students",
+        failureRedirect: "/login",
         successFlash: true,
         failureFlash: true
     }));
     
+    // ...
     
-
-    router.get("/students", LoginController.checkLoggedIn, StudentsController.renderStudentPage);
-    router.get("/catalogo", LoginController.checkLoggedIn, catalogoController.renderCatalogoPage);
-    router.get("/calendario", LoginController.checkLoggedIn, calendarioController.renderCalendarioPage);
-    router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
-    router.get("/login",LoginController.checkLoggedOut, LoginController.getPageLogin);
-    router.post("/login", passport.authenticate("student", {
-        successRedirect: "/students",
-        failureRedirect: "/login",
+    router.get("/Teachers", LoginTeachersController.checkLoggedTeacherIn, TeachersController.renderLoginTeachersPage);
+    router.get("/loginTeachers", LoginTeachersController.checkLoggedTeacherOut, LoginTeachersController.getPageLoginTeachers);
+    router.post("/loginTeachers", passport.authenticate("teacher", {
+        successRedirect: "/Teachers",
+        failureRedirect: "/loginTeachers",
         successFlash: true,
         failureFlash: true
     }));

@@ -13,23 +13,35 @@
     <header>
         <div class="container-fluid green">
             <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="../">Inicio</a>
+                <li>
+                    <h2 class=" text-white"><%= studentName%></h2>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="../citas">Citas</a>
+                    <a class="nav-link text-light" href="../students">Menu</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="../calendario">appointment</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="../calendario">Calendario</a>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../perfil">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../dataEditor">Modifications</a>
+                  </li>
+                  <li class="nav-item ml-auto">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="btn btn-primary justify-content-left">Logout</button>
+                    </form>
                 </li>
-            </ul>
+              </ul>
         </div>
         </nav>
     </header>
 
 
     <div class="container mt-5">
-        <h1 class="text-center">Teacher Reviews</h1>
+        <h1 class="text-center">Teacher catalogue</h1>
         <div class="row">
 
             <div class="col-md-6">
@@ -77,7 +89,7 @@
     <footer class="green py-5 mt-5">
         <div class="container text-light text-center">
             <p class="display-5 mb-3">ArrowSage</p>
-            <small class="text-white-50">&copy; Copyright by ByteGrad. All rights reserved.</small>
+            <small class="text-white-50">&copy; Copyright by ThunderArrow. All rights reserved.</small>
         </div>
     </footer>
 

@@ -1,6 +1,8 @@
 const renderCatalogoPage = async (req, res) => {
-    res.render("catalogo",{
-    });
+
+    const studentName = req.user.fullname;
+
+    res.render("catalogo.ejs",{ studentName });
 };
 
 module.exports = {

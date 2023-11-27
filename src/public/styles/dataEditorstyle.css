@@ -1,0 +1,27 @@
+body {
+    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1157844982728757258/login-background.png?ex=651a16ab&is=6518c52b&hm=55195f2259e7f73cb0ba0909b0de90a8c984ee096446914cd782ecc92c24b2cb&');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+} /*Creates a background image, fixing it to the screen and covering the whole page*/
+
+.green{
+    background-color: #057336;
+}/*Creates a colour*/
+
+.lightgreen{
+    background-color: #6CA46C;;
+}/*Creates a colour*/
+
+.darkgreen{
+    background-color: #104332;
+}/*Creates a colour*/
+
+.greenbutton{
+    background-color: #104332;
+    transition: background-color 0.3s ease; /* TransiciÃ³n suave */
+}
+
+.greenbutton:hover{
+    background-color: #0b2d22;
+}

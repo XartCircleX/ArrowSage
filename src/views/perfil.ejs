@@ -14,6 +14,36 @@
 </head>
 
 <body>
+
+    <header>
+        <div class="container-fluid green">
+            <ul class="nav nav-tabs">
+                <li>
+                    <h2 class=" text-white"><%= studentName%></h2>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="../students">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="../calendario">appointment</a>
+                      </li>
+                      <li class="nav-item">
+                        <li class="nav-item">
+                          <a class="nav-link text-light" href="../perfil">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-light" href="../dataEditor">Modifications</a>
+                        </li>
+                  <li class="nav-item ml-auto">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="btn btn-primary justify-content-left">Logout</button>
+                    </form>
+                </li>
+              </ul>
+        </div>
+        </nav>
+    </header>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

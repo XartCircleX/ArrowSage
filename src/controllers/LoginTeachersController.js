@@ -1,4 +1,4 @@
-const validationResult = require ("express-validator");
+const validationResult = require("express-validator");
 const loginTeachersService = require("../services/loginTeacherService");
 
 const getPageLoginTeachers = (req, res) => {

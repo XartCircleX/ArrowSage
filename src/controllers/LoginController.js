@@ -1,4 +1,4 @@
-const validationResult = require ("express-validator");
+const validationResult = require("express-validator");
 const loginService = require("../services/loginService");
 
 const getPageLogin = (req, res) => {
@@ -21,7 +21,7 @@ const handleLogin = async (req, res, userType) => {
 
     try {
         await loginService.handleLogin(req.body.email, req.body.password);
-        return res.redirect("/");
+        return res.redirect("/students");
     } catch (err) {
         req.flash("errors", err);
         return res.redirect("/login");

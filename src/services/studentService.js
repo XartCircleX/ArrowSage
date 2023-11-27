@@ -105,11 +105,41 @@ const getAsignatureByStudentId = async (studentId) => {
   }
 };
 
+const getUpdate = (req, res) => {
+  const {email,name,emailN} = req.body.user;
+  const actualizaionSQL = "UPDATE students SET fullname = ?, email = ? where email = ?" 
+db.query(actualizaionSQL,[name,email,emailN],(error,resultado)=>{
+  if(error){
+      console.error('error en la querry'+error.message);
+      return res.status(500).send('fallo en la base de datos')
+  }
+  else{
+      console.log('actualizaste los datos');
+  }
+});
+};
+
+const getErase = (req, res) => {
+  const {name, institutional_email} = req.body.user
+  const eliminarSQL = "delete from students where fullname = ? AND email = ?"
+db.query(eliminarSQL,[name, institutional_email],(error,resultado)=>{
+  if(error){
+      console.error('error en consulta'+error.message);
+      return res.status(500).send('datos no eliminados, error de base de datos');
+  }
+  else{
+      console.log('eliminaste los datos');
+  }
+});
+}
+
 module.exports = {
   getGroupByStudentId: getGroupByStudentId,
   getSpecialtyByStudentId: getSpecialtyByStudentId,
   getTurnByStudentId: getTurnByStudentId,
   getTutorByStudentId: getTutorByStudentId,
   getPeriodByStudentId: getPeriodByStudentId,
-  getAsignatureByStudentId: getAsignatureByStudentId
+  getAsignatureByStudentId: getAsignatureByStudentId,
+  getUpdate: getUpdate,
+  getErase: getErase
 };

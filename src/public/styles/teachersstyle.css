@@ -1,0 +1,39 @@
+.container_cover{
+    width: 100%;
+    height: 800px;
+    background: #6C7AA4;
+}
+
+.cover{
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: s;
+}
+
+
+.container_cover .text{
+    max-width: 400px;
+}
+
+.container_cover .text h1{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.green{
+    background-color: #053173;
+}/*Creates a colour*/
+
+.darkgreen{
+    background-color: #101443;
+}/*Creates a colour*/
+
+.buttontext{
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: bold;
+font-size: x-large;
+color: white;
+}/*Creates a typography for the text of the buttons, adding color, font weight and size*/

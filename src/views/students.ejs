@@ -10,33 +10,37 @@
 </head>
 
     <header>
-        <div class="container-fluid green">        
-        <ul class="nav nav-tabs">
-            <li>
-                <h2> Welcome "<%= user.fullname%>"</h2>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="../citas">Citas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="../calendario">Calendario</a>
-            </li>
-            <li class="nav-item">
-              <li class="nav-item">
-                <a class="nav-link text-light" href="../perfil">Perfil</a>
-              </li>
-              <li class="nav-item">
-                <form method="POST" action="/logout">
-                    <button type="submit" class="btn btn-primary">Log out</button>
-                </form>
-            </li>
-          </ul>
+      <header>
+        <div class="container-fluid green">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../citas">appointments</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../calendario">calendar</a>
+                  </li>
+                  <li class="nav-item">
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="../perfil">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="../dataEditor">Modifications</a>
+                    </li>
+                  <li class="nav-item ml-auto">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="btn btn-primary justify-content-left">Logout</button>
+                    </form>
+                </li>
+              </ul>
         </div>
-    </nav> 
+        </nav>
     </header>
 
     <body>
-
+      <div class="card green col-md-6 mx-auto text-white my-3">
+        <h1 class="text-center"> Welcome <%= studentName%></h1>
+    </div>
     <section class="carousel">
         <div class="container">
         <div id="carouselExampleCaptions" class="carousel slide">
@@ -49,22 +53,22 @@
               <div class="carousel-item active">
                 <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Information</p>
+                  <h5>Support</h5>
+                  <p>Here we have Teachers that can help you with your classes</p>
                 </div>
               </div>
               <div class="carousel-item">
                 <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Information</p>
+                  <h5>Knowlage</h5>
+                  <p>The informtion that you can get with your classes after school is very important, so don't be late</p>
                 </div>
               </div>
               <div class="carousel-item">
                 <img src="https://picsum.photos/1920/500" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Information</p>
+                  <h5>Improvement</h5>
+                  <p>You can improve your school skills</p>
                 </div>
               </div>
             </div>
@@ -82,15 +86,15 @@
 
 <!-- Esta es una pequeÃ±a parte que contiene informacion sobre la pagina-->
     <section class="informacion my-5">
-        <h2 class="text-center my-5">Acerca de esta Pagina</h2>
+        <h2 class="text-center my-5">About this web page</h2>
         <div class="container">
             <div class="row">
                 <div class="col-6">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum modi architecto ipsum adipisci maxime rem doloremque natus, mollitia voluptatum doloribus inventore molestias incidunt, distinctio tempora. Assumenda modi eligendi earum eum.
+                        This page is for students that are looking to improve their knowledge in the areas of interest such as topics of classes or anything that you need to know about your asignature.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum deleniti consequuntur explicabo expedita odit dicta eum commodi quod harum aut? Alias, quae eum debitis veniam unde modi nostrum corporis laborum.
+                       The Teachers that are here can help you with asignatures as Language, Databases aplication, Diferential Calculus and more.
                     </p>
                 </div>
                 <div class="col-6">
@@ -104,16 +108,16 @@
     <!-- En esta parte son tarjetas que explican que se puede hacer en la pagina y redireccion al usuario a cada paggina
     segun lo que quiera hacer-->
     <section class="opciones my-5">
-        <h2 class="text-center my-5">Nuestros Servicios</h2>
+        <h2 class="text-center my-5">Our Services</h2>
         <div class="container">
             <div class="row">
                 <div class="col-6">
                     <div class="card text-center">
                         <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Agenda tus Asesorias</h5>
-                          <p class="card-text">Este boton te llevara a la pagina de citas, ahi podras llenar un formulario para agendar una asesoria.</p>
-                          <a href="#" class="btn darkgreen buttontext">Ir a Citas</a>
+                          <h5 class="card-title">Schedule your appointments</h5>
+                          <p class="card-text">This button will make you go to the appointments page</p>
+                          <a href="#" class="btn darkgreen buttontext">Go to appointments</a>
                         </div>
                       </div>
                 </div>
@@ -121,9 +125,9 @@
                     <div class="card text-center">
                         <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Catalogo de profesores</h5>
-                          <p class="card-text">Este boton te llevara a el catalogo de profesores que ofrecen asesorias y algunas de las materias en las que pueden asesorarte.</p>
-                          <a href="./catalogo" class="btn darkgreen buttontext">Ver Catalogo</a>
+                          <h5 class="card-title">Teachers Cataloge</h5>
+                          <p class="card-text">this button will make you go to the Teachers Cataloge.</p>
+                          <a href="./catalogo" class="btn darkgreen buttontext">Go to Cataloge</a>
                         </div>
                       </div>
                 </div>
@@ -135,7 +139,7 @@
     <footer class="green py-5 mt-5">
       <div class="container text-light text-center">
         <p class="display-5 mb-3">ArrowSage</p>
-        <small class="text-white-50">&copy; Copyright by ByteGrad. All rights reserved.</small>
+        <small class="text-white-50">&copy; Copyright by ThunderArrow. All rights reserved.</small>
       </div>
 
     </footer>

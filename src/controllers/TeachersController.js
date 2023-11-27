@@ -1,6 +1,9 @@
 const renderLoginTeachersPage = async (req, res) => {
-    res.render("teachers",{
-    });
+   
+    const teacherName = req.user.fullname;
+
+    res.render("teachers",{ teacherName });
+    console.log("teacher name:", teacherName );
 };
 
 module.exports = {
