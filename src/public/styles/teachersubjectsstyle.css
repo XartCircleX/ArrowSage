@@ -1,0 +1,18 @@
+header{
+    background-color: #053173;
+    }
+    
+    /* Imagen del fondo de la pagina */
+    body {
+        background-image: url('img/Background.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    
+    }
+    
+    /* Esto define el como se ve el texto de la pagina */
+    .informacion{
+        text-align: justify;
+        line-height: 2em;
+    }

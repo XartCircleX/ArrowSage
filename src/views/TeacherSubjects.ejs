@@ -1,13 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>TeacherSubjects</h1>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>citasProfes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/teachersubjectsstyle.css">
+</head>
+
+  <header>
+    <div class="container-fluid">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active " aria-current="page" href="../Teachers">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="../calendarioTeachers">Calendar</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 my-5">
+        <div class="card">
+          <div class="card-header">
+            Notification
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Request session after school classes</h5>
+            <p class="card-text">The student <span style="color: blue; text-decoration: underline;">Ariel Diaz Ayub</span> has requested session after sfter school classes on the subject <span style="color: blue; text-decoration: underline;">Differential Calculus</span></p>
+            <a href="#" class="card-link">See details</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-secondary me-md-2" type="button">Decline</button>
+              <button class="btn btn-primary" type="button">Accept</button>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            1 days ago
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 my-5">
+        <div class="card">
+          <div class="card-header">
+            Notification
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Request session after school classes</h5>
+            <p class="card-text">The student <span style="color: blue; text-decoration: underline;">Javier Alonso Dominguez Corral </span> has requested session after sfter school classes on the subject <span style="color: blue; text-decoration: underline;">Operative systems</span></p>
+            <a href="#" class="card-link">See details</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-secondary me-md-2" type="button">Decline</button>
+              <button class="btn btn-primary" type="button">Accept</button>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 my-5">
+        <div class="card">
+          <div class="card-header">
+            Notification
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Request sessions after school classes</h5>
+            <p class="card-text">The student <span style="color: blue; text-decoration: underline;">Bryan Alexis Delgado Lopez </span> has requested session after sfter school classes on the subject <span style="color: blue; text-decoration: underline;">Web Applications</span></p>
+            <a href="#" class="card-link">See details</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-secondary me-md-2" type="button">Decline</button>
+              <button class="btn btn-primary" type="button">Accept</button>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            3 days ago
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="mb-4 my-5">
+        <div class="information">
+          <h2 class="text-center my-5">Your sessions after school classes</h2>
+          
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Pending sessions after school classes</h5>
+              <p class="card-text">You can find all the details of the advice by clicking on the below button</p>
+              <p class="card-text"><small class="text-body-secondary">Sessions after school classes accepted 3 days ago</small></p>
+              <div class="d-grid gap-2"> 
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  See details
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sessions after school classes details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <h5>Student(s)</h5>
+                        <p>Ariel Diaz Ayub</p>
+                        <h5>Subject</h5>
+                        <p>Diferential calculus</p>
+                        <h5>Date</h5>
+                        <p>27/11/2023</p>
+                        <h5>Hour</h5>
+                        <p>15:45</p>
+                        <h5>Modality</h5>
+                        <p>Virtual</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Este es el pie de nuestra pagina web-->
+  <footer class="bg-primary py-5 mt-5">
+    <div class="container text-light text-center">
+      <p class="display-5 mb-3">ArrowSage</p>
+      <small class="text-white-50">&copy; Copyright by ArrowSage. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

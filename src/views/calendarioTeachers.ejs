@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario en Card con Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/calendariostyle.css">
+</head>
+
+<body>
+  <div class="container-fluid green">
+    <ul class="nav nav-tabs">
+      <li>
+        <h2 class=" text-white"><%= teacherName%></h2>
+    </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="../teachers">Menu</a>
+          </li>
+          <li class="nav-item ml-auto">
+            <form method="POST" action="/logout">
+                <button type="submit" class="btn btn-primary justify-content-left">Logout</button>
+            </form>
+        </li>
+      </ul>
+</div>
+
+  <div class="container mt-6 py-5">
+    <div class="row">
+      <div class="text-center mx-auto">
+        <div class="card col-md-auto">
+          <div class="card-header text-center green py-3">
+            <h3 class="card-title titletext">Calendario</h3>
+          </div>
+          <div class="card-body  lightgreen" id="calendarContainer">
+            <!-- Contenedor del calendario -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="1">
+    <!--Creates an offcanvas, which contains the data from the appointments-->
+    <div class="offcanvas-header green">
+      <!--Makes the header of the offcanvas stilying it with css-->
+      <h5 class="offcanvas-title buttontext" id="staticBackdropLabel">Appointments</h5>
+      <!--The title of the header of the offcanvas-->
+
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+      <!--Creates a close button to close the offcanvas-->
+    </div>
+    <div class="offcanvas-body">
+      <!--Makes the body of the offcanvas-->
+      <div class="card">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="https://pbs.twimg.com/media/E0VuX6fVUAEvUWJ?format=jpg&name=4096x4096" alt="Image 2"
+              class="img-fluid w-100 h-100 py-3 px-3 d-none d-md-block">
+          </div>
+          <div class="col-md-8 py-3 mx-auto col-md-auto">
+            <h4>Teacher name</h4>
+              <h5>Subject & Date</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <!--Showcases the content of the body-->
+      There are no appointments
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <!-- Este es el pie de nuestra pagina web-->
+  <footer class="green py-5 mt-5">
+    <div class="container text-light text-center">
+      <p class="display-5 mb-3">ArrowSage</p>
+      <small class="text-white-50">&copy; Copyright by ByteGrad. All rights reserved.</small>
+    </div>
+
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="../config/calendarioEngine.js"></script>
+</body>
+
+</html>
