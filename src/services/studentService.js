@@ -88,23 +88,6 @@ const getPeriodByStudentId = async (studentId) => {
   }
 };
 
-const getAsignatureByStudentId = async (studentId) => {
-  try {
-    const queryAsignatureResult = await queryAsync('SELECT name FROM asignatures WHERE id_asignature = (SELECT id_asignature FROM students WHERE id_student = ?);', [studentId]);
-    
-    if (queryAsignatureResult.length > 0) {
-      console.log('The asignature is:', queryAsignatureResult[0].name);
-      return { asignature: queryAsignatureResult[0].name }; // Corregido aquí
-    } else {
-      console.log('Student not found or not assigned to any asignature.');
-      return null;
-    }
-  } catch (error) {
-    console.error('Error executing query:', error);
-    throw error;
-  }
-};
-
 const getUpdate = (req, res) => {
   const {email,name,emailN} = req.body.user;
   const actualizaionSQL = "UPDATE students SET fullname = ?, email = ? where email = ?" 
@@ -139,7 +122,6 @@ module.exports = {
   getTurnByStudentId: getTurnByStudentId,
   getTutorByStudentId: getTutorByStudentId,
   getPeriodByStudentId: getPeriodByStudentId,
-  getAsignatureByStudentId: getAsignatureByStudentId,
   getUpdate: getUpdate,
   getErase: getErase
 };

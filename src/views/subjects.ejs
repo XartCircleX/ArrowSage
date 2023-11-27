@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjects</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="/styles/subjectsstyle.css">
+</head>
+
+<body>
+
+
+  <nav>
+    <header>
+        <div class="container-fluid green">
+            <ul class="nav nav-tabs">
+                <li>
+                    <h2 class=" text-white"><%= studentName%></h2>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="../students">Menu</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="../calendario">appointment</a>
+                </li>
+                <li class="nav-item">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../perfil">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="../dataEditor">Modifications</a>
+                  </li>
+                  <li class="nav-item ml-auto">
+                    <form method="POST" action="/logout">
+                        <button type="submit" class="btn btn-primary justify-content-left">Logout</button>
+                    </form>
+                </li>
+              </ul>
+        </div>
+        </nav>
+  </header>
+
+
+
+  <!--Main accordion, which lets you choose a subject-->
+  <div class="accordion" id="outer_Accordion_1">
+    <div class="accordion-item">
+      <!--Accordion header, which acts as a button and has text describing the subject-->
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed darkgreen outertext" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <%= asignatureName %>
+        </button>
+      </h2>
+
+      <!--Secondary accordion, which shows the teachers-->
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#outer_Accordion_1">
+        <!--Main Body, which acts as a button and has text describing the subject-->
+        <div class="accordion-body">
+          <div class="accordion" id="inner_Accordion_1A">
+            <div class="accordion-item">
+              <h5 class="mb-0">
+                <button class="accordion-button collapsed lightgreen innertext" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseInner1A" aria-expanded="false" aria-controls="collapseInner1A">
+                  <%= TeacherName %>
+                </button>
+              </h5>
+            </div>
+            <!--Contents of the accordion, this accordion has an image showing the teacher along with the description of said teacher-->
+            <div id="collapseInner1A" class="collapse" aria-labelledby="inner_Accordion_1A" data-parent="#accordion">
+              <div class="card-body pd-1 w-20">
+                <div class="row">
+                  <div class="col-md-4">
+                    <!--Mugshot of the teacher-->
+                    <img
+                      src=""
+                      alt="Image 2" class="img-fluid w-100 h-100 py-3 px-3 d-none d-md-block">
+                  </div>
+                  <!--Teacher name and description-->
+                  <div class="col-md-8 py-3 mx-auto col-md-auto">
+                    <h3><%= TeacherName %></h3>
+                    <div>
+                      <h4 class="py-2">DESCRIPTION, the description of the teacher goes here</h4>
+                      </p>
+                    </div>
+                    <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
+                    <div class="input-group date w-50 col-md-auto " id="datetimepicker1A" data-target-input="nearest">
+                      <form action="/mostrar" method="post">
+                        <!-- ... (otros campos del formulario) ... -->
+                      
+                        <div class="input-group date w-50 col-md-auto " id="datetimepicker1A" data-target-input="nearest">
+                          <input type="text" class="form-control datetimepicker-input" name="fechaSeleccionada" data-target="#datetimepicker1A" placeholder="Select a date and time">
+                          <h1 class="input-group-append btn darkgreen buttontext" data-target="#datetimepicker1A" data-toggle="datetimepicker"> Select a time </h1>
+                        </div>
+                        <div class="py-3">
+                          <button type="submit" class="btn btn-block darkgreen buttontext w-50">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                      <!--The subaccordion ends, and the code repeats itself another two times-->
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+
+  <!-- Add Tempus Dominus JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+</body>
+
+</html>
+
+  <!--Script for the datetime picker, which Allows it to use the same method with differend variables, placed here for testing purposes. in the final version, this won't appear in the .html archive-->
+<script>
+  $(document).ready(function () {
+    initializeDateTimePicker('datetimepicker1A', 'L LT');
+    initializeDateTimePicker('datetimepicker2A', 'L LT');
+    initializeDateTimePicker('datetimepicker3A', 'L LT');
+
+    initializeDateTimePicker('datetimepicker1B', 'L LT');
+    initializeDateTimePicker('datetimepicker2B', 'L LT');
+    initializeDateTimePicker('datetimepicker3B', 'L LT');
+
+    initializeDateTimePicker('datetimepicker1C', 'L LT');
+    initializeDateTimePicker('datetimepicker2C', 'L LT');
+    initializeDateTimePicker('datetimepicker3C', 'L LT');
+  });
+
+  function initializeDateTimePicker(id, format) {
+    $('#' + id).datetimepicker({
+      format: format,
+    });
+  }
+</script>

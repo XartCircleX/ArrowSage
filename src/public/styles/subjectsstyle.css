@@ -1,0 +1,51 @@
+body {
+    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1175962701067976795/765f3f09-3bd6-4ff8-b47a-19db96f80ad7.png?ex=656d239c&is=655aae9c&hm=24a18eceae82def4b6780fc7a63cdd5c37bbe0b1178a636cdd8d599e42f664e3&');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+} /*Creates a background image, fixing it to the screen and covering the whole page*/
+
+
+.green{
+    background-color: #057336;
+} /*Creates a colour*/
+
+.lightgreen{
+    background-color: #6CA46C;;
+} /*Creates a colour*/
+
+.darkgreen{
+    background-color: #104332;
+} /*Creates a colour*/
+
+.buttontext{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+    } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+.outertext{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    color: white;
+        } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+.innertext{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+.calendarbutton{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    } /* Stablishes a typography for the buttons inside the calendar */
+
+    .input-group-append {
+        cursor: pointer;
+      }
