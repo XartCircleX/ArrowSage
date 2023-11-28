@@ -23,3 +23,12 @@ font-weight: bold;
 font-size: x-large;
 color: white;
 }/*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+.greenbutton{
+    background-color: #6C7AA4;
+    transition: background-color 0.3s ease; /* TransiciÃ³n suave */
+}
+
+.greenbutton:hover{
+    background-color: #505c82;
+}

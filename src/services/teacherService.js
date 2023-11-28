@@ -102,8 +102,8 @@ const getNameOfTeacherJuan = async () => {
   const updateAssessmentStatus = async (teacherId, status) => {
     try {
         // Actualiza el estado de la asesoría en la base de datos
-        const query = 'UPDATE assesments SET status = ?, id_teacher = ? WHERE id_asesorie = 1;';
-        const queryResult = await queryAsync(query, [status, teacherId]);
+        const query = 'UPDATE assesments SET status = ?, id_teacher = ? WHERE id_asesorie = ?;';
+        const queryResult = await queryAsync(query, [status, teacherId, teacherId]);
 
         if (queryResult && queryResult.affectedRows > 0) {
             console.log('Estado de la asesoría actualizado exitosamente.');
@@ -112,6 +112,8 @@ const getNameOfTeacherJuan = async () => {
             return { success: true };
         } else {
             console.log('No se pudo actualizar el estado de la asesoría.');
+            console.log(status)
+            console.log(teacherId)
             return { success: false };
         }
     } catch (error) {

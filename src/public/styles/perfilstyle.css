@@ -19,3 +19,16 @@ body {
 .darkgreen{
     background-color: #104332;
 } /*Creates a colour*/
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    margin-right: 5px; /* Puedes ajustar este valor segÃºn sea necesario */
+}
+
+.ml-auto {
+    margin-left: auto;
+}

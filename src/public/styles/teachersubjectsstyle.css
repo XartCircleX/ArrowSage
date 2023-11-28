@@ -25,3 +25,17 @@ color: white;
 .greenbutton:hover{
     background-color: #0b0e2e;
 }
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    margin-right: 5px; /* Puedes ajustar este valor segÃºn sea necesario */
+}
+
+.ml-auto {
+    margin-left: auto;
+}

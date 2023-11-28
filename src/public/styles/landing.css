@@ -1,3 +1,4 @@
+
 *{
     margin: 0%;
     padding: 0%;
@@ -7,7 +8,7 @@
 }
 
 body{
-    background-color: rgb(15, 143, 100);
+    background-color: #057336;
     overflow-x: hidden;
 }
 
@@ -41,7 +42,7 @@ body{
     position: absolute;
     bottom: -1px;
     left: 0px;
-    background-color: rgb(57, 2, 112);
+    background-color: #0b2d22;
     width: 0%;
     height: 3px;
     transition: 0.4s ease-in-out;
@@ -52,7 +53,7 @@ body{
 }
 
 .nav-link:hover{
-    color: rgb(57, 2, 112);
+    color: #0b2d22;
 }
 
 .btn-navbar{
@@ -104,8 +105,8 @@ body{
     display: inline-block;
     text-decoration: none;
     color: white;
-    border: 1px solid rgb(6, 158, 204);
-    background-color: rgb(6, 158, 204);
+    border: 1px solid #104332;
+    background-color: #104332;
     margin: 20px 0px;
     margin-right: 7px;
     border-radius: 50px;
@@ -117,8 +118,8 @@ body{
 
 .home-links:hover{
     background-color: transparent;
-    color: rgb(135, 15, 165);
-    border: 1px solid rgb(135, 15, 165) !important;
+    color: #0b2d22;
+    border: 1px solid #0b2d22 !important;
 }
 
 .img-home{

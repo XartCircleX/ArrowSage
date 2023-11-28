@@ -1,58 +1,61 @@
 body {
-    background-image: url('https://cdn.discordapp.com/attachments/1157844922829914224/1162579947072790559/calendar_background.jpg?ex=653c73f3&is=6529fef3&hm=72900f9d78d2b04caeb7bb6c6f43d0db8beb859b637197e3f108cd655c87c210&');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  
-  
-  } /*Creates a background image, fixing it to the screen and covering the whole page, along with disabling the scrollbar*/
-  
-  
-  .green{
-    background-color: #057336;
-  } /*Creates a colour*/
-  
-  .lightgreen{
-    background-color: #6CA46C;;
-  } /*Creates a colour*/
-  
-  .darkgreen{
-    background-color: #104332;
-  } /*Creates a colour*/
-  
-  .titletext{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    color: white;
-    } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
-  
-  .buttontext{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    font-size: x-large;
-    color: white;
-    } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
-  
-    .calendarbutton{
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    color: white;
-    } /* Stablishes a typography for the buttons inside the calendar */
-  
-  /* Estilos personalizados para las celdas del calendario */
-  .cell {
-    font-size: 16px;
-    padding: 5px;
+  background-image: url('/img/calendar_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+
+} /*Creates a background image, fixing it to the screen and covering the whole page, along with disabling the scrollbar*/
+
+
+.green{
+  background-color: #057336;
+} /*Creates a colour*/
+
+.lightgreen{
+  background-color: #6CA46C;;
+} /*Creates a colour*/
+
+.darkgreen{
+  background-color: #104332;
+} /*Creates a colour*/
+
+.buttontext{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  color: white;
+  } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+  .calendarbutton{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  } /* Stablishes a typography for the buttons inside the calendar */
+
+  .table th, .table td {
+      max-width: 1px;
+    } /* This evens the space between cells */
+
+    .greenbutton{
+      background-color: #104332;
+      transition: background-color 0.3s ease; /* TransiciÃ³n suave */
   }
   
-  /* Estilos personalizados para el botón en las celdas del calendario */
-  .btn-cell {
-    width: 100%;
-    margin-top: 5px;
+  .greenbutton:hover{
+      background-color: #0b2d22;
   }
-  
-  /* Establecer la altura del calendario para que ocupe toda la tarjeta */
-  #calendarContainer {
-      height: 100%;
-      overflow: hidden;
-    }
+
+  .nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.nav-item {
+    margin-right: 5px; /* Puedes ajustar este valor segÃºn sea necesario */
+}
+
+.ml-auto {
+    margin-left: auto;
+}

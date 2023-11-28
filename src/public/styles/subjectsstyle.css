@@ -49,3 +49,25 @@ body {
     .input-group-append {
         cursor: pointer;
       }
+
+      .greenbutton{
+        background-color: #104332;
+        transition: background-color 0.3s ease; /* Transición suave */
+    }
+    
+    .greenbutton:hover{
+        background-color: #0b2d22;
+    }
+    .nav {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .nav-item {
+        margin-right: 5px; /* Puedes ajustar este valor segÃºn sea necesario */
+    }
+    
+    .ml-auto {
+        margin-left: auto;
+    }

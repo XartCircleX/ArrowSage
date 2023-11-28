@@ -2,6 +2,7 @@ const dateService = require('../services/dataService');
 
 const renderTeacherSubjectPage = async (req, res) => {
     const teacherId = req.user.id_teacher;
+    const teacherName = req.user.fullname;
     try {
     const Nameresult = await dateService.saveStudentName(teacherId);
     const StatusResult = await dateService.getStatus(teacherId);
@@ -20,7 +21,7 @@ const renderTeacherSubjectPage = async (req, res) => {
   
         
 
-      res.render("TeacherSubjects", { studentName, StatusName });
+      res.render("TeacherSubjects", { studentName, StatusName, teacherName });
     } catch (error) {
       // Manejar errores aquí
       console.error("Error fetching data:", error);

@@ -3,10 +3,10 @@ const db = require('./dbservice');
 
 const queryAsync = util.promisify(db.query).bind(db);
 
-const saveDate = async (fechaSeleccionada, studentId) => {
+const saveDate = async (fechaSeleccionada,studentId) => {
   try {
     // Ajusta la consulta SQL según tu esquema de base de datos
-    const query = 'INSERT INTO assesments (id_student, date, status, created_at, active) VALUES (?, ?, ("process"), Now(), 1);';
+    const query = 'INSERT INTO assesments (id_teacher,id_student, date, status, created_at, active) VALUES (1,?, ?, ("process"), Now(), 1);';
     
     // Ejecuta la consulta con los parámetros proporcionados
     const queryResult = await queryAsync(query, [studentId, fechaSeleccionada]);

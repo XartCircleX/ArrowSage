@@ -1,0 +1,84 @@
+body {
+    background-image: url('/img/Login_Teachers.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+
+} /*Creates a background image, fixing it to the screen and covering the whole page, along with disabling the scrollbar*/
+
+
+.green{
+    background-color: #101443;
+} /*Creates a colour*/
+
+.lightgreen{
+    background-color: #053173;
+} /*Creates a colour*/
+
+.darkgreen{
+    background-color: #6C7AA4;
+} /*Creates a colour*/
+
+.buttontext{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+    } /*Creates a typography for the text of the buttons, adding color, font weight and size*/
+
+    .calendarbutton{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    } /* Stablishes a typography for the buttons inside the calendar */
+
+    .table th, .table td {
+        max-width: 1px;
+      } /* This evens the space between cells */
+
+      .greenbutton{
+        background-color: #101443;
+        transition: background-color 0.3s ease; /* TransiciÃ³n suave */
+    }
+    .green{
+        background-color: #101443;
+    }/*Creates a colour*/
+    
+    .lightgreen{
+        background-color: #053173;;
+    }/*Creates a colour*/
+    
+    .darkgreen{
+        background-color: #6C7AA4;
+    }/*Creates a colour*/
+    
+    .buttontext{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+    }/*Creates a typography for the text of the buttons, adding color, font weight and size*/
+    
+    .greenbutton{
+        background-color: #101443;
+        transition: background-color 0.3s ease; /* TransiciÃ³n suave */
+    }
+    
+    .greenbutton:hover{
+        background-color: #0b0e2e;
+    }
+    
+    .nav {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .nav-item {
+        margin-right: 5px; /* Puedes ajustar este valor segÃºn sea necesario */
+    }
+    
+    .ml-auto {
+        margin-left: auto;
+    }
