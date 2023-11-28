@@ -116,40 +116,116 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-     <!--Main accordion, which lets you choose a subject-->
-     <div class="accordion" id="outer_Accordion_2">
+    <!--Main accordion, which lets you choose a subject-->
+    <div class="accordion" id="outer_Accordion_2">
+        <div class="accordion-item">
+            <!--Accordion header, which acts as a button and has text describing the subject-->
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed darkgreen outertext" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <%= asignatureKusakaName %>
+                </button>
+            </h2>
+
+            <!--Secondary accordion, which shows the teachers-->
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#outer_Accordion_2">
+                <!--Main Body, which acts as a button and has text describing the subject-->
+                <div class="accordion-body">
+                    <div class="accordion" id="inner_Accordion_2A">
+                        <div class="accordion-item">
+                            <h5 class="mb-0">
+                                <button class="accordion-button collapsed lightgreen innertext" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseInner2A" aria-expanded="false"
+                                    aria-controls="collapseInner2A">
+                                    <%= TeacherKusakaName %>
+                                </button>
+                            </h5>
+                        </div>
+                        <!--Contents of the accordion, this accordion has an image showing the teacher along with the description of said teacher-->
+                        <div id="collapseInner2A" class="collapse" aria-labelledby="inner_Accordion_2A"
+                            data-parent="#accordion">
+                            <div class="card-body pd-1 w-20">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <!--Mugshot of the teacher-->
+                                        <img src="" alt="Image 2"
+                                            class="img-fluid w-100 h-100 py-3 px-3 d-none d-md-block">
+                                    </div>
+                                    <!--Teacher name and description-->
+                                    <div class="col-md-8 py-3 mx-auto col-md-auto">
+                                        <h3>
+                                            <%= TeacherKusakaName %>
+                                        </h3>
+                                        <div>
+                                            <h4 class="py-2">DESCRIPTION, the description of the teacher goes here</h4>
+                                            </p>
+                                        </div>
+                                        <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
+                                        <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
+                                            data-target-input="nearest">
+                                            <form action="/mostrar" method="post">
+                                                <!-- ... (otros campos del formulario) ... -->
+
+                                                <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
+                                                    data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input"
+                                                        name="fechaSeleccionada" data-target="#datetimepicker2A"
+                                                        placeholder="Select a date and time">
+                                                    <h1 class="input-group-append btn darkgreen buttontext"
+                                                        data-target="#datetimepicker1A" data-toggle="datetimepicker">
+                                                        Select a time </h1>
+                                                </div>
+                                                <div class="py-3">
+                                                    <button type="submit"
+                                                        class="btn btn-block darkgreen buttontext w-50">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--The subaccordion ends, and the code repeats itself another two times-->
+    <!--Main accordion, which lets you choose a subject-->
+    <div class="accordion" id="outer_Accordion_3">
       <div class="accordion-item">
           <!--Accordion header, which acts as a button and has text describing the subject-->
           <h2 class="accordion-header">
               <button class="accordion-button collapsed darkgreen outertext" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  <%= asignatureJuanName %>
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <%= asignatureRomanName %>
               </button>
           </h2>
 
           <!--Secondary accordion, which shows the teachers-->
-          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#outer_Accordion_2">
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#outer_Accordion_3">
               <!--Main Body, which acts as a button and has text describing the subject-->
               <div class="accordion-body">
-                  <div class="accordion" id="inner_Accordion_2A">
+                  <div class="accordion" id="inner_Accordion_3A">
                       <div class="accordion-item">
                           <h5 class="mb-0">
                               <button class="accordion-button collapsed lightgreen innertext" type="button"
-                                  data-bs-toggle="collapse" data-bs-target="#collapseInner2A" aria-expanded="false"
-                                  aria-controls="collapseInner2A">
-                                  <%= TeacherJuanName %>
+                                  data-bs-toggle="collapse" data-bs-target="#collapseInner3A" aria-expanded="false"
+                                  aria-controls="collapseInner3A">
+                                  <%= TeacherRomanName %>
                               </button>
                           </h5>
                       </div>
                       <!--Contents of the accordion, this accordion has an image showing the teacher along with the description of said teacher-->
-                      <div id="collapseInner2A" class="collapse" aria-labelledby="inner_Accordion_2A"
+                      <div id="collapseInner3A" class="collapse" aria-labelledby="inner_Accordion_3A"
                           data-parent="#accordion">
                           <div class="card-body pd-1 w-20">
                               <div class="row">
@@ -161,25 +237,25 @@
                                   <!--Teacher name and description-->
                                   <div class="col-md-8 py-3 mx-auto col-md-auto">
                                       <h3>
-                                          <%= TeacherJuanName %>
+                                          <%= TeacherRomanName %>
                                       </h3>
                                       <div>
                                           <h4 class="py-2">DESCRIPTION, the description of the teacher goes here</h4>
                                           </p>
                                       </div>
                                       <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
-                                      <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
+                                      <div class="input-group date w-50 col-md-auto " id="datetimepicker3A"
                                           data-target-input="nearest">
                                           <form action="/mostrar" method="post">
                                               <!-- ... (otros campos del formulario) ... -->
 
-                                              <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
+                                              <div class="input-group date w-50 col-md-auto " id="datetimepicker3A"
                                                   data-target-input="nearest">
                                                   <input type="text" class="form-control datetimepicker-input"
-                                                      name="fechaSeleccionada" data-target="#datetimepicker1A"
+                                                      name="fechaSeleccionada" data-target="#datetimepicker3A"
                                                       placeholder="Select a date and time">
                                                   <h1 class="input-group-append btn darkgreen buttontext"
-                                                      data-target="#datetimepicker1A" data-toggle="datetimepicker">
+                                                      data-target="#datetimepicker3A" data-toggle="datetimepicker">
                                                       Select a time </h1>
                                               </div>
                                               <div class="py-3">
@@ -191,14 +267,12 @@
                                   </div>
                               </div>
                           </div>
-                      </div>                        
+                      </div>
                   </div>
               </div>
           </div>
       </div>
   </div>
-
-    <!--The subaccordion ends, and the code repeats itself another two times-->
 
 
 

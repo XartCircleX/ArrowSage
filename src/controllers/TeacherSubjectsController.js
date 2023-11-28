@@ -1,11 +1,32 @@
-const renderSubjectTeachersPage = async (req, res) => {
-   
-    const teacherName = req.user.fullname;
+const dateService = require('../services/dataService');
 
-    res.render("TeacherSubjects",{ teacherName });
-    console.log("teacher name:", teacherName );
-};
+const renderTeacherSubjectPage = async (req, res) => {
+    const teacherId = req.user.id_teacher;
+    try {
+    const Nameresult = await dateService.saveStudentName(teacherId);
+    const StatusResult = await dateService.getStatus(teacherId);
+        
+     let studentName = "No Name"
 
+    if (Nameresult && Nameresult.fullname) {
+        studentName = Nameresult.fullname;
+      }
+
+      let StatusName = "No status"
+
+      if (StatusResult && StatusResult.status) {
+        StatusName = StatusResult.status;
+        }
+  
+        
+
+      res.render("TeacherSubjects", { studentName, StatusName });
+    } catch (error) {
+      // Manejar errores aquí
+      console.error("Error fetching data:", error);
+      res.render("TeacherSubjects", { studentName: 'Unknown name', StatusName: 'Unknown status' });
+    }
+  };
 module.exports = {
-    renderSubjectTeachersPage: renderSubjectTeachersPage,
+    renderTeacherSubjectPage,
 };

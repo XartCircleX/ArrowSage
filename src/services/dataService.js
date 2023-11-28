@@ -6,7 +6,7 @@ const queryAsync = util.promisify(db.query).bind(db);
 const saveDate = async (fechaSeleccionada, studentId) => {
   try {
     // Ajusta la consulta SQL según tu esquema de base de datos
-    const query = 'INSERT INTO assesments (id_student, date) VALUES (?, ?);';
+    const query = 'INSERT INTO assesments (id_student, date, status, created_at, active) VALUES (?, ?, ("process"), Now(), 1);';
     
     // Ejecuta la consulta con los parámetros proporcionados
     const queryResult = await queryAsync(query, [studentId, fechaSeleccionada]);
@@ -25,6 +25,48 @@ const saveDate = async (fechaSeleccionada, studentId) => {
   }
 };
 
+const saveStudentName = async (teacherId) => {
+    try {
+      // Ajusta la consulta SQL según tu esquema de base de datos
+      const query = 'SELECT fullname From students WHERE id_student = (SELECT id_student FROM assesments WHERE id_teacher = ?);';
+      
+      // Ejecuta la consulta con los parámetros proporcionados
+      const queryResult = await queryAsync(query, [teacherId]);
+  
+      if (queryResult.length > 0) {
+        return { fullname: queryResult[0].fullname };
+      } else {
+        console.log('No name found.');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error executing query:', error);
+      throw error;
+    }
+  };
+
+  const getStatus = async (teacherId) => {
+    try {
+      // Ajusta la consulta SQL según tu esquema de base de datos
+      const query = 'SELECT status From assesments WHERE id_teacher = ?;';
+      
+      // Ejecuta la consulta con los parámetros proporcionados
+      const queryResult = await queryAsync(query, [teacherId]);
+  
+      if (queryResult.length > 0) {
+        return { status: queryResult[0].status };
+      } else {
+        console.log('No name found.');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error executing query:', error);
+      throw error;
+    }
+  };
+
 module.exports = {
   saveDate,
+  saveStudentName,
+  getStatus,
 };

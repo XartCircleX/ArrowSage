@@ -12,14 +12,12 @@ const renderPerfilPage = async (req, res) => {
     const turnResult = await studentService.getTurnByStudentId(studentId);
     const tutorResult = await studentService.getTutorByStudentId(studentId);
     const periodResult = await studentService.getPeriodByStudentId(studentId);
-    const asignatureResult = await studentService.getAsignatureByStudentId(studentId);
 
     let groupName = 'No Group';
     let specialtyName = 'No Specialty';
     let turnName = 'No Turn';
     let tutorName = 'No Tutor';
     let periodName = 'No Period';
-    let asignatureName = 'No asignature';
 
     if (groupResult && groupResult.id_group) {
       groupName = groupResult.id_group;
@@ -41,15 +39,11 @@ const renderPerfilPage = async (req, res) => {
       periodName = periodResult.id_period;
     }
 
-    if (asignatureResult && asignatureResult.asignature) {
-      asignatureName = asignatureResult.asignature;
-    }
-
-    res.render("perfil", { groupName, specialtyName, studentName, studentEmail, turnName, tutorName, periodName, asignatureName });
+    res.render("perfil", { groupName, specialtyName, studentName, studentEmail, turnName, tutorName, periodName });
   } catch (error) {
     // Manejar errores aquí
     console.error("Error fetching data:", error);
-    res.render("perfil", { groupName: 'Unknown Group', specialtyName: 'Unknown Specialty', turnName: 'Unknown Turn', tutorName: 'Unknown Tutor', periodName: 'Unknown Period', asignatureName:'Unknown Asignature' });
+    res.render("perfil", { groupName: 'Unknown Group', specialtyName: 'Unknown Specialty', turnName: 'Unknown Turn', tutorName: 'Unknown Tutor', periodName: 'Unknown Period' });
   }
 };
 

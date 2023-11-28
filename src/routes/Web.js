@@ -12,8 +12,9 @@ const DataEditorController = require('../controllers/DataEditorController');
 const calendarioController = require('../controllers/calendarioController');
 const calendarioTeacherController =require('../controllers/calendarioTeacherController')
 const SaveSubjectController = require('../controllers/saveSubjectController');
-const SubjectController = require('../controllers/subjectController')
-const TeacherSubjectsController = require('../controllers/TeacherSubjectsController')
+const SubjectController = require('../controllers/subjectController');
+const TeacherSubjectsController = require('../controllers/TeacherSubjectsController');
+const processAfterClassController = require('../controllers/ProcessAfterClassController');
 const auth = require("../validation/authValidation");
 const passport = require("passport");
 const initPassportLocal = require("../controllers/passportLocalController");
@@ -40,7 +41,9 @@ const initWebRoutes = (app) => {
     // ...
     
     router.get("/Teachers", LoginTeachersController.checkLoggedTeacherIn, TeachersController.renderLoginTeachersPage);
-    router.get("/TeacherSubjects", TeacherSubjectsController.renderSubjectTeachersPage, TeacherSubjectsController.renderSubjectTeachersPage);
+    router.get('/TeacherSubjects', LoginTeachersController.checkLoggedTeacherIn, TeacherSubjectsController.renderTeacherSubjectPage);
+    router.post('/TeacherSubjects/acceptAssessment', LoginTeachersController.checkLoggedTeacherIn, processAfterClassController.acceptAssessment);
+    router.post('/TeacherSubjects/declineAssessment', LoginTeachersController.checkLoggedTeacherIn, processAfterClassController.declineAssessment);
     router.get("/calendarioTeachers", LoginTeachersController.checkLoggedTeacherIn, calendarioTeacherController.rendercalendarTeacherPage);
     router.get("/loginTeachers", LoginTeachersController.checkLoggedTeacherOut, LoginTeachersController.getPageLoginTeachers);
     router.post("/loginTeachers", passport.authenticate("teacher", {

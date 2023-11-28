@@ -99,12 +99,33 @@ const getNameOfTeacherJuan = async () => {
     }
   };
 
+  const updateAssessmentStatus = async (teacherId, status) => {
+    try {
+        // Actualiza el estado de la asesoría en la base de datos
+        const query = 'UPDATE assesments SET status = ?, id_teacher = ? WHERE id_asesorie = 1;';
+        const queryResult = await queryAsync(query, [status, teacherId]);
+
+        if (queryResult && queryResult.affectedRows > 0) {
+            console.log('Estado de la asesoría actualizado exitosamente.');
+            console.log(status)
+            console.log(teacherId)
+            return { success: true };
+        } else {
+            console.log('No se pudo actualizar el estado de la asesoría.');
+            return { success: false };
+        }
+    } catch (error) {
+        console.error('Error al ejecutar la consulta:', error);
+        throw error;
+    }
+};
 
 module.exports = {
-  getNameOfTeacherJuan: getNameOfTeacherJuan,
-  getAsignatureTeacherJuan: getAsignatureTeacherJuan,
-  getNameOfTeacherKusaka: getNameOfTeacherKusaka,
-  getAsignatureTeacherKusaka: getAsignatureTeacherKusaka,
-  getNameOfTeacherRoman: getNameOfTeacherRoman,
-  getAsignatureTeacherRoman: getAsignatureTeacherRoman
+  getNameOfTeacherJuan,
+  getAsignatureTeacherJuan,
+  getNameOfTeacherKusaka,
+  getAsignatureTeacherKusaka,
+  getNameOfTeacherRoman,
+  getAsignatureTeacherRoman,
+  updateAssessmentStatus,
 };
