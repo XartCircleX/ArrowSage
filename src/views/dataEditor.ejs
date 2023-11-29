@@ -51,18 +51,18 @@
                         <h2 class="text-center">Modifications</h2>
                     </div>
                     <div class="card-body">
-                        <form action="/Update" method="post">
+                        <form action="/updateStudent" method="post">
                             <div class="py-3">
-                                <input type="text" class="form-control" id="institutionalES" name="institutionalES"
-                                    required placeholder="Insert current institutional Email">
+                                <input type="text" class="form-control" id="email" name="email"
+                                    required placeholder="Insert current Email">
                             </div>
                             <div class="py-3">
-                                <input type="text" class="form-control" id="name" name="name" required
+                                <input type="text" class="form-control" id="fullname" name="fullname"
                                     placeholder="Insert new name">
                             </div>
                             <div class="py-3">
-                                <input type="text" class="form-control" id="institutional_email"
-                                    name="institutional_email" placeholder="Insert new Institutional Email">
+                                <input type="text" class="form-control" id="emailN"
+                                    name="email" placeholder="Insert new Email">
                             </div>
                             <div class="py-3 mx-3">
                                 <div class="row">
@@ -70,28 +70,30 @@
                                         <h2 class="text-white">UPDATE DATA</h2>
                                     </button>
                                 </div>
-
                             </div>
+                        </form>
                     </div>
                     <div class="card-footer green">
                     </div>
                 </div>
             </div>
-
-
-            <div class="row justify-content-center">
-                <div class="col-md-6 mt-3">
-                    <div class="card my-3 lightgreen">
-                        <button type="submit" class="btn btn-block btn-danger my-3 mx-3">
-                            <h1>DELETE ACCOUNT</h1>
-                        </button>
+    
+            <form action="/deleteStudent" method="POST">
+                <!-- Agrega un campo oculto para indicar que es una eliminación -->
+                <input type="hidden" name="action" value="delete">
+    
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mt-3">
+                        <div class="card my-3 lightgreen">
+                            <button type="submit" class="btn btn-block btn-danger my-3 mx-3">
+                                <h1>DELETE ACCOUNT</h1>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </form>
         </div>
     </div>
-
     <!-- Este es el pie de nuestra pagina web-->
     <footer class="green py-5 mt-5">
         <div class="container text-light text-center">

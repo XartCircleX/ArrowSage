@@ -30,6 +30,8 @@ const initWebRoutes = (app) => {
     router.get("/calendario", LoginController.checkLoggedIn, calendarioController.rendercalendarPage);
     router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
     router.get("/dataEditor", LoginController.checkLoggedIn, DataEditorController.renderDataEditorPage);
+    router.post("/updateStudent", LoginController.checkLoggedIn, DataEditorController.updateStudent);
+    router.post("/deleteStudent", LoginController.checkLoggedIn, DataEditorController.deleteStudent);
     router.get("/login", LoginController.checkLoggedOut, LoginController.getPageLogin);
     router.post("/login", passport.authenticate("student", {
         successRedirect: "/students",
