@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@googleapis/docs": "^3.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "circular-json": "^0.5.9",
@@ -20,6 +21,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "googleapis": "^131.0.0",
     "jsonc": "^2.0.0",
     "mysql": "^2.18.1",
     "passport": "^0.6.0",
