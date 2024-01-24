@@ -33,7 +33,7 @@
                         <a class="nav-link text-light" href="../dataEditor">Modifications</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-light" href="../calendario">calendar</a>
+                      <a class="nav-link text-light" href="https://calendar.google.com/calendar/u/0?cid=MDkzZjRmYmRmYzIyMDliNWNmZTYxNWFiODQzMWQ4YTRmMDU5ZjczZDFhOGRlN2Y5ZjkzNTlmYjUyZmM4MTMyNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t">calendar</a>
                   </li>
                     <li class="nav-item ml-auto">
                         <form method="POST" action="/logout">
@@ -94,22 +94,21 @@
                                         <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
                                         <div class="input-group date w-50 col-md-auto " id="datetimepicker1A"
                                             data-target-input="nearest">
-                                            <form action="/mostrar" method="post">
-                                                <!-- ... (otros campos del formulario) ... -->
-
-                                                <div class="input-group date w-50 col-md-auto " id="datetimepicker1A"
-                                                    data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input"
-                                                        name="fechaSeleccionada" data-target="#datetimepicker1A"
-                                                        placeholder="Select a date and time">
-                                                    <h1 class="input-group-append btn darkgreen buttontext"
-                                                        data-target="#datetimepicker1A" data-toggle="datetimepicker">
-                                                        Select a time </h1>
-                                                </div>
-                                                <div class="py-3">
-                                                    <button type="submit"
-                                                        class="btn btn-block darkgreen buttontext w-50">Submit</button>
-                                                </div>
+                                            <h1>Crear Evento</h1>
+                                            <form action="/createEvent" method="post">
+                                              <label for="eventTitle">Título del Evento:</label>
+                                              <input type="text" id="eventTitle" name="eventTitle" required>
+                                          
+                                              <label for="eventDescription">Descripción del Evento:</label>
+                                              <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
+                                          
+                                              <label for="startDateTime">Fecha y hora de inicio:</label>
+                                              <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+                                          
+                                              <label for="endDateTime">Fecha y hora de finalización:</label>
+                                              <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+                                          
+                                              <button type="submit" id="submitButton">Crear Evento</button>
                                             </form>
                                         </div>
                                     </div>
@@ -307,5 +306,48 @@
         $('#' + id).datetimepicker({
             format: format,
         });
+    };
+
+    function createEvent() {
+    // Obtener los valores de los campos del formulario
+    const eventTitle = document.getElementById('eventTitle').value;
+    const eventDescription = document.getElementById('eventDescription').value;
+    const startDateTime = document.getElementById('startDateTime').value;
+    const endDateTime = document.getElementById('endDateTime').value;
+
+    // Validar los campos del formulario
+    if (!eventTitle || !startDateTime || !endDateTime) {
+        console.error('Todos los campos deben ser completados.');
+        // Puedes mostrar un mensaje al usuario indicando que todos los campos son obligatorios
+        return;
     }
+
+    // Enviar la información del evento al servidor para crearlo
+    fetch('/create-event', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ eventTitle, eventDescription, startDateTime, endDateTime }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la solicitud al servidor.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        // Manejar la respuesta del servidor, mostrar mensajes de éxito, etc.
+    })
+    .catch(error => {
+        console.error('Error al enviar la información del evento al servidor:', error);
+        // Puedes mostrar un mensaje al usuario indicando que ha ocurrido un error
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', createEvent);
+});
 </script>

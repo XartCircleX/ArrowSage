@@ -9,8 +9,8 @@ const LoginTeachersController = require('../controllers/LoginTeachersController'
 const catalogoController = require('../controllers/CatalogoController');
 const perfilController = require('../controllers/PerfilController');
 const DataEditorController = require('../controllers/DataEditorController');
-const calendarioController = require('../controllers/calendarioController');
-const calendarioTeacherController =require('../controllers/calendarioTeacherController')
+const GoogleCalendarController = require('../controllers/googleCalendarController');
+const calendarioTeacherController = require('../controllers/calendarioTeacherController');
 const SaveSubjectController = require('../controllers/saveSubjectController');
 const SubjectController = require('../controllers/subjectController');
 const TeacherSubjectsController = require('../controllers/TeacherSubjectsController');
@@ -27,8 +27,9 @@ const initWebRoutes = (app) => {
     router.get("/mostrar", LoginController.checkLoggedIn, SaveSubjectController.renderSaveSubjectPage);
     router.post("/mostrar", SaveSubjectController.guardarDatos);
     router.get("/subjects", LoginController.checkLoggedIn, SubjectController.renderSubjectPage);
-    router.get("/calendario", LoginController.checkLoggedIn, calendarioController.rendercalendarPage);
     router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
+    router.get('/createEvent', LoginController.checkLoggedIn, GoogleCalendarController.createEvent);
+    router.post('/createEvent', LoginController.checkLoggedIn, GoogleCalendarController.createEvent);
     router.get("/dataEditor", LoginController.checkLoggedIn, DataEditorController.renderDataEditorPage);
     router.post("/updateStudent", LoginController.checkLoggedIn, DataEditorController.updateStudent);
     router.post("/deleteStudent", LoginController.checkLoggedIn, DataEditorController.deleteStudent);
