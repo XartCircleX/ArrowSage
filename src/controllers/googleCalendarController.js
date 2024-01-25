@@ -11,13 +11,6 @@ const auth = new google.auth.JWT(
     CREDENTIALS.private_key,
     SCOPES
 );
-const TIMEOFFSET = '+05:30';
-
-// Método para obtener la fecha y hora en formato ISO 8601
-const getISO8601DateTime = () => {
-    let date = new Date();
-    return date.toISOString();
-};
 
 const insertEvent = async (event) => {
     try {
@@ -41,11 +34,10 @@ const insertEvent = async (event) => {
 // Nuevo método para crear un evento
 const createEvent = async (req, res) => {
     try {
-        // Obtén los datos del cuerpo de la solicitud
-        const { eventTitle, eventDescription, startDateTime, endDateTime } = req.body;
+        const {startDateTime, endDateTime, timeZone, studentName, subjectName } = req.body;
 
         // Validación de datos
-        if (!eventTitle || !startDateTime || !endDateTime) {
+        if (!startDateTime || !endDateTime || !timeZone || !studentName || !subjectName) {
             return res.status(400).json({ success: false, message: 'Los campos obligatorios deben estar presentes.' });
         }
 
@@ -55,15 +47,15 @@ const createEvent = async (req, res) => {
 
         // Evento para Google Calendar
         const event = {
-            'summary': eventTitle,
-            'description': eventDescription || '',
+            'summary': `${subjectName} - ${studentName}`,
+            'description': 'I need assistance, teacher :C',
             'start': {
                 'dateTime': isoStartDateTime,
-                'timeZone': 'America/Chihuahua'
+                'timeZone': timeZone
             },
             'end': {
                 'dateTime': isoEndDateTime,
-                'timeZone': 'America/Chihuahua'
+                'timeZone': timeZone
             }
         };
 
@@ -71,13 +63,16 @@ const createEvent = async (req, res) => {
         const result = await insertEvent(event);
 
         if (result === 1) {
-            res.status(200).json({ success: true, message: 'Evento creado exitosamente.' });
+            req.flash('success', 'Evento creado exitosamente.');
+            return res.redirect('/subjects'); 
         } else {
-            res.status(500).json({ success: false, message: 'Error al crear el evento.' });
+            req.flash('error', 'Error al crear el evento.');
+            return res.redirect('/subjects'); 
         }
     } catch (error) {
         console.error('Error en el controlador createEvent:', error);
-        res.status(500).json({ success: false, message: 'Error interno del servidor.', error: error.message });
+        req.flash('error', 'Error interno del servidor.');
+        return res.redirect('/subjects'); 
     }
 };
 

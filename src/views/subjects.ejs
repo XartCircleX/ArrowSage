@@ -44,9 +44,17 @@
             </div>
     </nav>
     </header>
-
-
-
+    <div>
+    <% if (locals.error) { %>
+        <div class="alert alert-danger" role="alert">
+            <%= locals.error %>
+        </div>
+    <% } else if (locals.success) { %>
+        <div class="alert alert-success" role="alert">
+            <%= locals.success %>
+        </div>
+    <% } %>
+    </div>
     <!--Main accordion, which lets you choose a subject-->
     <div class="accordion" id="outer_Accordion_1">
         <div class="accordion-item">
@@ -91,24 +99,33 @@
                                             <p class="py-2">Calculus expert blending passion with practicality. Dynamic, with a global perspective from worldwide studies. Engages students with humor and relatable examples, simplifying complex concepts.
                                             </p>
                                         </div>
+
+                                        <div>
+                                            <h1>Create appointment</h1>
+                                        </div>
                                         <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
                                         <div class="input-group date w-50 col-md-auto " id="datetimepicker1A"
                                             data-target-input="nearest">
-                                            <h1>Crear Evento</h1>
                                             <form action="/createEvent" method="post">
-                                              <label for="eventTitle">Título del Evento:</label>
-                                              <input type="text" id="eventTitle" name="eventTitle" required>
-                                          
-                                              <label for="eventDescription">Descripción del Evento:</label>
-                                              <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
-                                          
-                                              <label for="startDateTime">Fecha y hora de inicio:</label>
-                                              <input type="datetime-local" id="startDateTime" name="startDateTime" required>
-                                          
-                                              <label for="endDateTime">Fecha y hora de finalización:</label>
-                                              <input type="datetime-local" id="endDateTime" name="endDateTime" required>
-                                          
-                                              <button type="submit" id="submitButton">Crear Evento</button>
+                                                <div>
+                                                    <label for="startDateTime">Start Date:</label>
+                                                    <div>
+                                                    <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+                                                     </div>
+                                                  </div>
+                                                  <div>
+                                                    <label for="endDateTime">End Date:</label>
+                                                    <div>
+                                                    <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+                                                </div>
+                                                  </div>
+                                              <input type="hidden" id="studentName" name="studentName" value="<%= studentName %>">
+
+                                              <input type="hidden" id="timeZone" name="timeZone" value="America/Chihuahua">
+
+                                              <input type="hidden" id="subjectName" name="subjectName" value="<%= asignatureJuanName %>">
+
+                                              <button class="input-group-append btn darkgreen buttontext" type="submit" id="submitButton">Done</button>
                                             </form>
                                         </div>
                                     </div>
@@ -165,25 +182,32 @@
                                             <p class="py-2">Operating Systems Authority. Dynamic instructor blending theory with real-world applications. Draws from diverse industry experience for a practical approach
                                             </p>
                                         </div>
+                                        <div>
+                                            <h1>create appointment</h1>
+                                            </div>
                                         <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
                                         <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
                                             data-target-input="nearest">
-                                            <form action="/mostrar" method="post">
-                                                <!-- ... (otros campos del formulario) ... -->
+                                                <form action="/createEvent" method="post">
+                                                    <div>
+                                                        <label for="startDateTime">Start Date:</label>
+                                                        <div>
+                                                        <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+                                                         </div>
+                                                      </div>
+                                                      <div>
+                                                        <label for="endDateTime">End Date:</label>
+                                                        <div>
+                                                        <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+                                                    </div>
+                                                      </div>
+                                              <input type="hidden" id="studentName" name="studentName" value="<%= studentName %>">
 
-                                                <div class="input-group date w-50 col-md-auto " id="datetimepicker2A"
-                                                    data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input"
-                                                        name="fechaSeleccionada" data-target="#datetimepicker2A"
-                                                        placeholder="Select a date and time">
-                                                    <h1 class="input-group-append btn darkgreen buttontext"
-                                                        data-target="#datetimepicker1A" data-toggle="datetimepicker">
-                                                        Select a time </h1>
-                                                </div>
-                                                <div class="py-3">
-                                                    <button type="submit"
-                                                        class="btn btn-block darkgreen buttontext w-50">Submit</button>
-                                                </div>
+                                              <input type="hidden" id="timeZone" name="timeZone" value="America/Chihuahua">
+
+                                              <input type="hidden" id="subjectName" name="subjectName" value="<%= asignatureKusakaName %>">
+
+                                              <button class="input-group-append btn darkgreen buttontext" type="submit" id="submitButton">Done</button>
                                             </form>
                                         </div>
                                     </div>
@@ -241,26 +265,33 @@
                                           <p class="py-2">Dynamic educator weaving cultural nuances into language studies. Offers a global perspective from extensive travels. Engages students with interactive language immersion techniques and storytelling.</p>
                                           </p>
                                       </div>
+                                      <div>
+                                        <h1>create appointment</h1>
+                                        </div>
                                       <!--Datetime picker, which shows a calendar along with the time, allowing the user to select an specific date-->
                                       <div class="input-group date w-50 col-md-auto " id="datetimepicker3A"
                                           data-target-input="nearest">
-                                          <form action="/mostrar" method="post">
-                                              <!-- ... (otros campos del formulario) ... -->
+                                            <form action="/createEvent" method="post">
+                                                <div>
+                                                    <label for="startDateTime">Start Date:</label>
+                                                    <div>
+                                                    <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+                                                     </div>
+                                                  </div>
+                                                  <div>
+                                                    <label for="endDateTime">End Date:</label>
+                                                    <div>
+                                                    <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+                                                </div>
+                                                  </div>
+                                              <input type="hidden" id="studentName" name="studentName" value="<%= studentName %>">
 
-                                              <div class="input-group date w-50 col-md-auto " id="datetimepicker3A"
-                                                  data-target-input="nearest">
-                                                  <input type="text" class="form-control datetimepicker-input"
-                                                      name="fechaSeleccionada" data-target="#datetimepicker3A"
-                                                      placeholder="Select a date and time">
-                                                  <h1 class="input-group-append btn darkgreen buttontext"
-                                                      data-target="#datetimepicker3A" data-toggle="datetimepicker">
-                                                      Select a time </h1>
-                                              </div>
-                                              <div class="py-3">
-                                                  <button type="submit"
-                                                      class="btn btn-block darkgreen buttontext w-50">Submit</button>
-                                              </div>
-                                          </form>
+                                              <input type="hidden" id="timeZone" name="timeZone" value="America/Chihuahua">
+
+                                              <input type="hidden" id="subjectName" name="subjectName" value="<%= asignatureKusakaName %>">
+
+                                              <button class="input-group-append btn darkgreen buttontext" type="submit" id="submitButton">Done</button>
+                                            </form>
                                       </div>
                                   </div>
                               </div>
