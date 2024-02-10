@@ -4,8 +4,8 @@ const configViewEngine = require('./src/config/viewEngine')
 const bodyParser = require('body-parser');
 const initWebRoutes = require('./src/routes/Web');
 const cookieParser = require('cookie-parser');
-const connectFlash = require("connect-flash");
 const session = require("express-session");
+const connectFlash = require("connect-flash");
 const passport = require ("passport");
 
 app.use(express.static('public'));
@@ -24,14 +24,17 @@ app.use(session({
   }
 }));
 
+// Enable flash message using connect-flash
+app.use(connectFlash());
+app.use((req, res, next) => {
+    console.log('Flash Messages:', req.flash());
+    next();
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Enable flash message
-app.use(connectFlash());
-
 configViewEngine(app);
-
 
 // Config passport middleware
 app.use(passport.initialize());

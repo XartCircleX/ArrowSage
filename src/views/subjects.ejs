@@ -44,17 +44,14 @@
             </div>
     </nav>
     </header>
-    <div>
-    <% if (locals.error) { %>
-        <div class="alert alert-danger" role="alert">
-            <%= locals.error %>
+        <div>
+            <% if (typeof error !== 'undefined' && error.length > 0) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+        
         </div>
-    <% } else if (locals.success) { %>
-        <div class="alert alert-success" role="alert">
-            <%= locals.success %>
-        </div>
-    <% } %>
-    </div>
     <!--Main accordion, which lets you choose a subject-->
     <div class="accordion" id="outer_Accordion_1">
         <div class="accordion-item">
@@ -110,13 +107,13 @@
                                                 <div>
                                                     <label for="startDateTime">Start Date:</label>
                                                     <div>
-                                                    <input type="datetime-local" id="startDateTime" name="startDateTime" required>
+                                                    <input type="text" id="startDateTime" name="startDateTime" required>
                                                      </div>
                                                   </div>
                                                   <div>
                                                     <label for="endDateTime">End Date:</label>
                                                     <div>
-                                                    <input type="datetime-local" id="endDateTime" name="endDateTime" required>
+                                                    <input type="text" id="endDateTime" name="endDateTime" required>
                                                 </div>
                                                   </div>
                                               <input type="hidden" id="studentName" name="studentName" value="<%= studentName %>">
@@ -339,46 +336,4 @@
         });
     };
 
-    function createEvent() {
-    // Obtener los valores de los campos del formulario
-    const eventTitle = document.getElementById('eventTitle').value;
-    const eventDescription = document.getElementById('eventDescription').value;
-    const startDateTime = document.getElementById('startDateTime').value;
-    const endDateTime = document.getElementById('endDateTime').value;
-
-    // Validar los campos del formulario
-    if (!eventTitle || !startDateTime || !endDateTime) {
-        console.error('Todos los campos deben ser completados.');
-        // Puedes mostrar un mensaje al usuario indicando que todos los campos son obligatorios
-        return;
-    }
-
-    // Enviar la información del evento al servidor para crearlo
-    fetch('/create-event', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ eventTitle, eventDescription, startDateTime, endDateTime }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error en la solicitud al servidor.');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        // Manejar la respuesta del servidor, mostrar mensajes de éxito, etc.
-    })
-    .catch(error => {
-        console.error('Error al enviar la información del evento al servidor:', error);
-        // Puedes mostrar un mensaje al usuario indicando que ha ocurrido un error
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const submitButton = document.getElementById('submitButton');
-    submitButton.addEventListener('click', createEvent);
-});
 </script>

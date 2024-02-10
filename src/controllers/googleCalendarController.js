@@ -64,15 +64,18 @@ const createEvent = async (req, res) => {
 
         if (result === 1) {
             req.flash('success', 'Evento creado exitosamente.');
-            return res.redirect('/subjects'); 
+            console.log("successful");
         } else {
             req.flash('error', 'Error al crear el evento.');
-            return res.redirect('/subjects'); 
+            console.log("error");
         }
+        
+        // Redirige o renderiza la vista con los mensajes flash
+        res.redirect('/subjects?success=' + req.flash('success') + '&error=' + req.flash('error'));
     } catch (error) {
         console.error('Error en el controlador createEvent:', error);
-        req.flash('error', 'Error interno del servidor.');
-        return res.redirect('/subjects'); 
+        req.flash('error', 'caracteres invalidos.');
+        return res.redirect('/subjects?success=' + req.flash('success') + '&error=' + req.flash('error')); 
     }
 };
 

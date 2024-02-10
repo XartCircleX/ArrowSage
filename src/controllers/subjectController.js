@@ -1,7 +1,10 @@
 const teacherService = require('../services/teacherService');
 
+
 const renderSubjectPage = async (req, res) => {
   const studentName = req.user.fullname;
+  const success = req.query.success;
+  const error = req.query.error;
   try {
     const TeacherJuanResult = await teacherService.getNameOfTeacherJuan(); // Agrega paréntesis para llamar a la función
     const asignaturesJuanResult = await teacherService.getAsignatureTeacherJuan(); // Agrega paréntesis para llamar a la función
@@ -45,7 +48,17 @@ const renderSubjectPage = async (req, res) => {
     }
 
     // Renderiza la vista 'Subject' y pasa los datos
-    res.render('subjects', { studentName, TeacherJuanName, asignatureJuanName, TeacherKusakaName, asignatureKusakaName, TeacherRomanName, asignatureRomanName});
+    res.render('subjects', {
+      studentName,
+      TeacherJuanName,
+      asignatureJuanName,
+      TeacherKusakaName,
+      asignatureKusakaName,
+      TeacherRomanName,
+      asignatureRomanName,
+      success,
+      error
+  });
   } catch (error) {
     // Manejar errores aquí
     console.error("Error fetching data:", error);

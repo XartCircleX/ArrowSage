@@ -26,7 +26,10 @@ const initWebRoutes = (app) => {
     router.get("/catalogo", LoginController.checkLoggedIn, catalogoController.renderCatalogoPage);
     router.get("/mostrar", LoginController.checkLoggedIn, SaveSubjectController.renderSaveSubjectPage);
     router.post("/mostrar", SaveSubjectController.guardarDatos);
-    router.get("/subjects", LoginController.checkLoggedIn, SubjectController.renderSubjectPage);
+    router.get("/subjects", LoginController.checkLoggedIn, (req, res) => {
+        console.log('Flash Messages:', req.flash());
+        SubjectController.renderSubjectPage(req, res);
+    });
     router.get("/perfil", LoginController.checkLoggedIn, perfilController.renderPerfilPage);
     router.get('/createEvent', LoginController.checkLoggedIn, GoogleCalendarController.createEvent);
     router.post('/createEvent', LoginController.checkLoggedIn, GoogleCalendarController.createEvent);
